@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio Details - Emmanuel Maingi{% endblock %}
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio Details</h2>
+    <p>Soccer League Management System — Django full-stack capstone project.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="portfolio-details-media">
+          <div class="main-image">
+            <div class="portfolio-details-slider swiper init-swiper">
+              <script type="application/json" class="swiper-config">
+                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-1.webp' %}" alt="Project" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-3.webp' %}" alt="Project" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-5.webp' %}" alt="Project" class="img-fluid"></div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
+            <span>Python</span><span>Django</span><span>MySQL</span><span>Bootstrap 5</span><span>HTML5/CSS3</span><span>Git/GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="portfolio-details-content">
+          <div class="project-meta">
+            <div class="badge-wrapper"><span class="project-badge">Full Stack Development</span></div>
+            <div class="date-client">
+              <div class="meta-item"><i class="bi bi-calendar-check"></i><span>Sep 2025 – Jan 2026</span></div>
+              <div class="meta-item"><i class="bi bi-buildings"></i><span>Emobilis Technologies Institute</span></div>
+            </div>
+          </div>
+
+          <h2 class="project-title">Soccer League Management System</h2>
+          <div class="project-website">
+            <i class="bi bi-github"></i>
+            <a href="https://github.com/Emannuh" target="_blank">github.com/Emannuh</a>
+          </div>
+
+          <div class="project-overview">
+            <p class="lead">Enterprise-level soccer league platform built with Django and MySQL, managing 500+ player records, match schedules, and real-time standings across multiple divisions.</p>
+
+            <div class="accordion project-accordion" id="projectAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1">
+                    <i class="bi bi-clipboard-data me-2"></i> Project Overview
+                  </button>
+                </h2>
+                <div id="collapse-1" class="accordion-collapse collapse show" data-bs-parent="#projectAccordion">
+                  <div class="accordion-body">Full CRUD operations, user authentication, and RBAC for admins, team managers, and viewers. Handles player registration, team management, match fixtures, and automated standings calculations.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2">
+                    <i class="bi bi-exclamation-diamond me-2"></i> The Challenge
+                  </button>
+                </h2>
+                <div id="collapse-2" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                  <div class="accordion-body">Build a secure web platform that multiple user roles could use simultaneously — with real-time standings, player tracking, and match scheduling — while keeping the interface mobile-friendly.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3">
+                    <i class="bi bi-award me-2"></i> The Solution
+                  </button>
+                </h2>
+                <div id="collapse-3" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                  <div class="accordion-body">Django ORM-backed system with custom admin panel, RESTful APIs, and OOP backend logic. Bootstrap 5 frontend achieving 95% cross-browser compatibility. Git branching workflows accelerated deployments by 60%.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-features">
+            <h3><i class="bi bi-stars"></i> Key Features</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check2-circle"></i> Full CRUD — Players, Teams, Matches</li>
+                  <li><i class="bi bi-check2-circle"></i> Role-Based Access Control</li>
+                  <li><i class="bi bi-check2-circle"></i> User Authentication & Sessions</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check2-circle"></i> Real-time League Standings</li>
+                  <li><i class="bi bi-check2-circle"></i> Django Admin Customisation</li>
+                  <li><i class="bi bi-check2-circle"></i> Mobile-first Responsive Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-buttons">
+            <a href="https://github.com/Emannuh" target="_blank" class="btn-view-project"><i class="bi bi-github me-2"></i>View on GitHub</a>
+            <a href="{% url 'portfolio' %}" class="btn-next-project">All Projects <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

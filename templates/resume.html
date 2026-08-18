@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resume - Emmanuel Maingi{% endblock %}
+{% block body_class %}resume-page{% endblock %}
+
+{% block content %}
+<section id="resume" class="resume section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Resume</h2>
+    <p>Emmanuel Maingi &mdash; B.Sc. Mathematics & Computer Science &mdash; Linux, Microsoft, AWS, CCNA Certified &mdash; Nairobi, Kenya</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-lg-6">
+
+        <div class="resume-item" data-aos="fade-up">
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-content">
+            <article class="education-item">
+              <h4>B.Sc. Mathematics and Computer Science</h4>
+              <h5>May 2018 – January 2022</h5>
+              <p class="institution"><em>Meru University of Science and Technology, Kenya</em></p>
+              <p>Solid foundation in algorithms, discrete mathematics, software engineering, and computer systems.</p>
+            </article>
+            <article class="education-item">
+              <h4>Full Stack Web Development Bootcamp</h4>
+              <h5>September 2025 – January 2026</h5>
+              <p class="institution"><em>Emobilis Technologies Institute</em></p>
+              <p>HTML5, CSS3, Bootstrap 5, Python, Django, MySQL, Git/GitHub. Capstone: Enterprise Soccer League Management System.</p>
+            </article>
+            <article class="education-item">
+              <h4>Cloud Security Specialist</h4>
+              <h5>June 2025 – October 2025</h5>
+              <p class="institution"><em>Cyber Shujaa – USIU-Africa (Microsoft ADC Program)</em></p>
+              <p>Azure AD (Entra ID), RBAC, Conditional Access, Defender, Sentinel, NSGs, Key Vault, and Azure labs.</p>
+            </article>
+            <article class="education-item">
+              <h4>Kubernetes and Cloud Native Associate (KCNA)</h4>
+              <h5>April 2025 – June 2025</h5>
+              <p class="institution"><em>Andela & The Linux Foundation</em></p>
+              <p>Kubernetes architecture, container orchestration, cloud-native CI/CD, networking, security, kubectl, and YAML.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="resume-item" data-aos="fade-up">
+          <h3 class="resume-title">Certifications</h3>
+          <div class="resume-content">
+            <article class="education-item"><h4>Kubernetes and Cloud Native Associate (KCNA)</h4><h5>2025 &mdash; Linux Foundation</h5></article>
+            <article class="education-item"><h4>Introduction to Generative AI with AWS</h4><h5>2025 &mdash; AWS / Udacity</h5></article>
+            <article class="education-item"><h4>Introduction to Linux Systems Administration</h4><h5>2025 &mdash; Linux Foundation</h5></article>
+            <article class="education-item"><h4>Microsoft Identity, Compliance and Security Fundamentals</h4><h5>2025 &mdash; Microsoft</h5></article>
+            <article class="education-item"><h4>AWS Certified Cloud Practitioner</h4><h5>2023 &mdash; Amazon Web Services</h5></article>
+            <article class="education-item"><h4>CCNA Levels 1, 2, 3 + Network Security + Cyber Security Essentials</h4><h5>2023 &mdash; Cisco Networking Academy</h5></article>
+          </div>
+        </div>
+
+        <div class="resume-item skills-animation" data-aos="fade-up">
+          <h3 class="resume-title">Professional Skills</h3>
+          <div class="resume-content">
+            <div class="skill-item"><h4>Cloud Security & Infrastructure</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+            <div class="skill-item"><h4>Linux / Windows Systems Administration</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+            <div class="skill-item"><h4>Containers, Kubernetes & IaC</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+            <div class="skill-item"><h4>Python / Django / REST APIs</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+            <div class="skill-item"><h4>Networking (CCNA, NSGs, Firewalls)</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+            <div class="skill-item"><h4>CI/CD & DevOps Tooling</h4><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-lg-6">
+        <div class="resume-item" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="resume-title">Professional Experience</h3>
+          <div class="resume-content">
+
+            <article class="experience-item">
+              <h4>Full Stack Software Engineer</h4>
+              <h5>September 2025 – January 2026</h5>
+              <p class="company"><em>Emobilis Technologies Institute — Bootcamp</em></p>
+              <ul>
+                <li>Architected and deployed an enterprise Soccer League Management System using Django + MySQL, managing 500+ player records with full CRUD, authentication, and RBAC.</li>
+                <li>Engineered responsive front-end interfaces with HTML5, CSS3, and Bootstrap 5, achieving 95% cross-browser compatibility.</li>
+                <li>Implemented secure Git/GitHub workflows for a 10+ developer team, accelerating deployments by 60%.</li>
+                <li>Developed RESTful APIs and backend automation in Python/Django using OOP and Django ORM.</li>
+              </ul>
+            </article>
+
+            <article class="experience-item">
+              <h4>Azure Security Engineer</h4>
+              <h5>May 2025 – October 2025</h5>
+              <p class="company"><em>Microsoft ADC Cybersecurity Skilling — Cyber Shujaa / USIU</em></p>
+              <ul>
+                <li>Architected multi-tier Azure infrastructure with Sentinel SIEM, Defender for Cloud, and JIT VM access — reducing attack surface by 80%.</li>
+                <li>Designed defense-in-depth networks using VNet segmentation, NSGs, ASGs, Azure Firewall.</li>
+                <li>Built secure CI/CD and container pipelines with AKS, ACR, RBAC, and image scanning.</li>
+                <li>Automated GDPR-compliant governance using ARM templates for data classification and incident response.</li>
+              </ul>
+            </article>
+
+            <article class="experience-item">
+              <h4>Cloud and DevOps Engineer Intern</h4>
+              <h5>September 2024 – March 2025</h5>
+              <p class="company"><em>Global Careers Africa</em></p>
+              <ul>
+                <li>Architected and deployed MERN stack applications on AWS achieving 99.9% uptime.</li>
+                <li>Launched Tele Afya healthcare API across AWS and Huawei Cloud.</li>
+                <li>Accelerated software delivery by 70% through CI/CD with GitHub Actions and EKS.</li>
+                <li>Delivered web applications optimised for 10,000+ concurrent users.</li>
+              </ul>
+            </article>
+
+            <article class="experience-item">
+              <h4>ICT Officer – Intern</h4>
+              <h5>April 2023 – July 2024</h5>
+              <p class="company"><em>Ministry of Education, Kenya</em></p>
+              <ul>
+                <li>Onboarded 1,500+ users across 20+ academic departments — 100% adoption in 3 months.</li>
+                <li>Reduced technical incidents by 45% through system integration and policy standardisation.</li>
+                <li>Maintained 99.8% uptime for 500+ faculty and 10,000+ students during peak periods.</li>
+              </ul>
+            </article>
+
+            <article class="experience-item">
+              <h4>ICT Technical Support Officer</h4>
+              <h5>February 2022 – March 2023</h5>
+              <p class="company"><em>Huduma Centre – Kenya ICT Department</em></p>
+              <ul>
+                <li>Boosted operational efficiency by 50% through ICT infrastructure upgrades.</li>
+                <li>Administered Linux servers, Active Directory, and databases for 1,000+ concurrent users.</li>
+                <li>Managed 300+ VMs on Hyper-V, VMware, and Citrix sustaining 99.8% uptime.</li>
+                <li>Led ICT teams and training programs achieving 100% adoption within 3 months.</li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

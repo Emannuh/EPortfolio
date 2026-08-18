@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services - Emmanuel Maingi{% endblock %}
+{% block body_class %}services-page{% endblock %}
+
+{% block content %}
+<section id="services" class="services section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>What I bring to the table — from securing cloud infrastructure to building full-stack applications and keeping systems running at peak performance.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center g-5">
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-shield-lock-fill"></i></div>
+          <div class="service-content">
+            <h3>Cloud Security Engineering</h3>
+            <p>Defense-in-depth architectures on Azure — Microsoft Sentinel SIEM, Defender for Cloud, JIT VM access, NSGs/ASGs, Azure Firewall, RBAC, and GDPR-compliant data protection. Reducing attack surfaces through proactive threat detection and Zero Trust principles.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-cloud-upload-fill"></i></div>
+          <div class="service-content">
+            <h3>DevOps & CI/CD Pipelines</h3>
+            <p>End-to-end CI/CD pipelines using GitHub Actions, Jenkins, and AWS CodePipeline. Container orchestration with Docker, Kubernetes (AKS/EKS), and ACR. Infrastructure-as-Code with Terraform and ARM Templates for repeatable, reliable deployments.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-server"></i></div>
+          <div class="service-content">
+            <h3>Linux & Windows Systems Administration</h3>
+            <p>Server setup, hardening, and administration on Linux and Windows Server. Active Directory, Group Policy, user access controls, automated backups, VMware/Hyper-V virtualisation, and proactive monitoring for high-availability systems.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+          <div class="service-content">
+            <h3>Full Stack Web Development</h3>
+            <p>Production-ready web applications using Django (Python) backend with HTML5, CSS3, Bootstrap 5, and JavaScript frontend. RESTful API design, MySQL/PostgreSQL, user authentication, and RBAC. Mobile-first and cross-browser compatible.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-router-fill"></i></div>
+          <div class="service-content">
+            <h3>Network Infrastructure</h3>
+            <p>CCNA-level routing, switching, VLANs, DNS, VPNs, firewall rules, and performance tuning. Cloud networking on Azure (VNet, NSGs, service endpoints) and AWS. Proven track record improving access speeds and sustaining 99.8% uptime.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="service-item">
+          <div class="service-icon"><i class="bi bi-headset"></i></div>
+          <div class="service-content">
+            <h3>IT Technical Support</h3>
+            <p>First and second-line technical support for large user bases — hardware/software troubleshooting, ticket management via ServiceNow and Jira, user onboarding, and ICT documentation. Demonstrated 40–50% reductions in downtime and incident rates.</p>
+            <a href="{% url 'service-details' %}" class="service-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

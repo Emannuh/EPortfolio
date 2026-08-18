@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - Emmanuel Maingi{% endblock %}
+{% block body_class %}contact-page{% endblock %}
+
+{% block content %}
+<section id="contact" class="contact section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Open to DevOps, Cloud, and Technical Support opportunities — let's connect and build something reliable together.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 g-lg-5">
+
+      <div class="col-lg-5">
+        <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+          <h3>Contact Info</h3>
+          <p>Feel free to reach out via email, phone, or connect on LinkedIn and GitHub. Based in Nairobi, Kenya and open to remote work.</p>
+
+          <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box"><i class="bi bi-geo-alt"></i></div>
+            <div class="content"><h4>Location</h4><p>Nairobi, Kenya</p><p>Open to Remote &amp; On-site</p></div>
+          </div>
+          <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box"><i class="bi bi-telephone"></i></div>
+            <div class="content"><h4>Phone</h4><p><a href="tel:+254704517498">+254 7 04 517 498</a></p></div>
+          </div>
+          <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box"><i class="bi bi-envelope"></i></div>
+            <div class="content">
+              <h4>Email</h4>
+              <p><a href="mailto:Emhmanuh@gmail.com">Emhmanuh@gmail.com</a></p>
+              <p><a href="mailto:emm.maingi@gmail.com">emm.maingi@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="info-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box"><i class="bi bi-github"></i></div>
+            <div class="content"><h4>GitHub</h4><p><a href="https://github.com/Emannuh" target="_blank">github.com/Emannuh</a></p></div>
+          </div>
+          <div class="info-item" data-aos="fade-up" data-aos-delay="700">
+            <div class="icon-box"><i class="bi bi-linkedin"></i></div>
+            <div class="content"><h4>LinkedIn</h4><p><a href="https://www.linkedin.com/in/emmanuel-maingi-546b0a175/" target="_blank">linkedin.com/in/emmanuel-maingi</a></p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+          <h3>Send a Message</h3>
+          <p>Have a project, opportunity, or question? Drop me a message and I'll get back to you as soon as possible.</p>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-12">
+                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+              </div>
+              <div class="col-12">
+                <textarea name="message" class="form-control" rows="6" placeholder="Your message..." required></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button type="submit" class="btn">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

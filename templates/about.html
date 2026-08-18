@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Emmanuel Maingi{% endblock %}
+{% block body_class %}about-page{% endblock %}
+
+{% block content %}
+<section id="about" class="about section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>About</h2>
+    <p>Technical Support & DevOps Engineer with 3+ years delivering secure enterprise ICT solutions across cloud platforms, Linux/Windows systems, and network infrastructure.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center justify-content-between gy-5 mb-5">
+      <div class="col-lg-7" data-aos="fade-right" data-aos-delay="150">
+        <div class="intro-content">
+          <span class="eyebrow">Based in Nairobi, Kenya</span>
+          <h2 class="headline">Hi, I'm Emmanuel — a DevOps & Cloud Security Engineer building reliable, secure infrastructure</h2>
+          <p class="lead">
+            I specialise in cloud and software engineering, system administration (Linux/Windows), and network infrastructure. I have proven expertise implementing defense-in-depth controls using Microsoft Defender, SIEM, Azure Firewall, and RBAC/IAM frameworks.
+          </p>
+          <p>
+            I combine deep knowledge of threat detection, GDPR compliance, and infrastructure optimisation with strong problem-solving skills to deliver reliable solutions under pressure. I hold certifications from AWS, Microsoft, Cisco, and the Linux Foundation.
+          </p>
+          <div class="cta-group">
+            <a href="{% url 'portfolio' %}" class="btn-ghost">View My Projects <i class="bi bi-arrow-up-right"></i></a>
+            <a href="{% url 'resume' %}" class="link-underline">View Resume <i class="bi bi-file-person"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="250">
+        <figure class="profile-figure text-center text-lg-end">
+          <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}" alt="Emmanuel Maingi" class="img-fluid profile-photo">
+        </figure>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="mb-5">
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+          <div class="skill-item">
+            <i class="bi bi-cloud-check-fill"></i>
+            <h3>Cloud Platforms</h3>
+            <p>AWS, Azure, GCP, Huawei Cloud — multi-cloud architecture and deployment.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+          <div class="skill-item">
+            <i class="bi bi-shield-lock-fill"></i>
+            <h3>Security & IAM</h3>
+            <p>Microsoft Sentinel, Defender for Cloud, RBAC, Zero Trust, GDPR compliance.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="skill-item">
+            <i class="bi bi-boxes"></i>
+            <h3>Containers & IaC</h3>
+            <p>Docker, Kubernetes (AKS/EKS), Terraform, ARM Templates, CI/CD pipelines.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-item">
+            <i class="bi bi-code-slash"></i>
+            <h3>Dev & Scripting</h3>
+            <p>Python, Django, JavaScript, Go, Rust, Shell Scripting, Node.js, .NET.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="360">
+          <div class="skill-item">
+            <i class="bi bi-terminal-fill"></i>
+            <h3>Linux & Windows</h3>
+            <p>Linux systems administration, Active Directory, VMware, Hyper-V, Citrix.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="420">
+          <div class="skill-item">
+            <i class="bi bi-router-fill"></i>
+            <h3>Networking</h3>
+            <p>CCNA, NSGs, Azure Firewall, VPN, VNet segmentation, DNS, TCP/IP.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="480">
+          <div class="skill-item">
+            <i class="bi bi-git"></i>
+            <h3>DevOps & CI/CD</h3>
+            <p>GitHub Actions, Jenkins, AWS CodePipeline, Git workflows, ServiceNow, Jira.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="540">
+          <div class="skill-item">
+            <i class="bi bi-database-fill-gear"></i>
+            <h3>Databases</h3>
+            <p>MySQL, PostgreSQL, SQLite, Django ORM, Azure SQL, data auditing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="mb-5">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+          <article class="timeline-item">
+            <span class="dot"></span>
+            <time>2018 – 2022</time>
+            <h4>B.Sc. Mathematics & Computer Science</h4>
+            <p>Meru University of Science and Technology, Kenya.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+          <article class="timeline-item">
+            <span class="dot"></span>
+            <time>2022 – 2023</time>
+            <h4>ICT Technical Support Officer</h4>
+            <p>Huduma Centre – Kenya ICT Department.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <article class="timeline-item">
+            <span class="dot"></span>
+            <time>2023 – 2024</time>
+            <h4>ICT Officer Intern</h4>
+            <p>Ministry of Education — 1,500+ users onboarded nationwide.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <article class="timeline-item">
+            <span class="dot"></span>
+            <time>2024 – Present</time>
+            <h4>Cloud & DevOps Engineer</h4>
+            <p>Global Careers Africa & Cyber Shujaa — multi-cloud deployments.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="personal-quote text-center mb-5" data-aos="fade-down" data-aos-delay="200">
+      <p>"Building resilient, secure infrastructure — one pipeline at a time."</p>
+    </blockquote>
+
+    <div class="row g-3 justify-content-center">
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="120">
+        <div class="fact-pill"><i class="bi bi-cloud-lightning"></i><span>Cloud Infra</span></div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="160">
+        <div class="fact-pill"><i class="bi bi-shield-check"></i><span>Cybersecurity</span></div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="fact-pill"><i class="bi bi-geo-alt"></i><span>Nairobi, KE</span></div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="240">
+        <div class="fact-pill"><i class="bi bi-cpu"></i><span>Open Source</span></div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
+        <div class="fact-pill"><i class="bi bi-mortarboard"></i><span>Lifelong Learner</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Technical Proficiency</h2>
+    <p>Core skill areas across cloud, security, DevOps, and software engineering.</p>
+  </div>
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 skills-animation">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-box">
+          <h3>Cloud Security (Azure)</h3>
+          <p>Sentinel SIEM, Defender, JIT access, RBAC, compliance.</p>
+          <span class="text-end d-block">92%</span>
+          <div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-box">
+          <h3>Linux & Systems Admin</h3>
+          <p>Server administration, Active Directory, scripting, VMware.</p>
+          <span class="text-end d-block">90%</span>
+          <div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-box">
+          <h3>CI/CD & Containers</h3>
+          <p>Kubernetes, Docker, GitHub Actions, Jenkins, Terraform.</p>
+          <span class="text-end d-block">85%</span>
+          <div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="skill-box">
+          <h3>Python / Django</h3>
+          <p>Full-stack web apps, REST APIs, OOP, ORM, authentication.</p>
+          <span class="text-end d-block">82%</span>
+          <div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section id="stats" class="stats section dark-background">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="avatars d-flex align-items-center">
+          <img src="{% static 'img/person/person-m-2.webp' %}" alt="Colleague" class="rounded-circle" loading="lazy">
+          <img src="{% static 'img/person/person-m-3.webp' %}" alt="Colleague" class="rounded-circle" loading="lazy">
+          <img src="{% static 'img/person/person-f-5.webp' %}" alt="Colleague" class="rounded-circle" loading="lazy">
+          <img src="{% static 'img/person/person-m-5.webp' %}" alt="Colleague" class="rounded-circle" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="row counters">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <h2><span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+            <p>Years Experience</p>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <h2><span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+            <p>Certifications</p>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <h2><span data-purecounter-start="0" data-purecounter-end="10000" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+            <p>Users Supported</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
