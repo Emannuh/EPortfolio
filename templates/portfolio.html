@@ -97,17 +97,18 @@
   .card-footer-link:hover { color: #0a58ca; }
 
   .lang-bar {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 16px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 20px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     flex-wrap: wrap;
   }
-  .lang-bar span { font-size: 0.8rem; font-weight: 600; }
-  .lang-bar .lang-label { color: #6c757d; }
+  .lang-bar span { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .lang-bar .lang-label { color: rgba(255,255,255,0.45); font-weight: 500; }
   .lang-dot {
     width: 10px; height: 10px;
     border-radius: 50%;
@@ -122,7 +123,7 @@
 
   <div class="container section-title" data-aos="fade-up">
     <h2>Portfolio</h2>
-    <p>Projects spanning cloud security, DevOps pipelines, full-stack development, and IT infrastructure — built in real enterprise and institutional environments.</p>
+    <p>Real GitHub projects spanning full-stack development, cloud security, DevOps pipelines, networking, and IT infrastructure. Built across institutional, government, and enterprise environments.</p>
   </div>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -141,38 +142,162 @@
 
       <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
         <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-cloud">Cloud</li>
+        <li data-filter=".filter-fullstack">Full Stack</li>
         <li data-filter=".filter-devops">DevOps</li>
         <li data-filter=".filter-security">Security</li>
-        <li data-filter=".filter-fullstack">Full Stack</li>
+        <li data-filter=".filter-cloud">Cloud</li>
       </ul>
 
       <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
 
-        <!-- Project 1: Soccer League -->
+        <!-- Project 1: FKFSYS Soccer League -->
         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-fullstack">
           <div class="project-card">
             <div class="card-icon green"><i class="bi bi-trophy"></i></div>
-            <h4>Soccer League Management System</h4>
-            <p class="card-desc">Enterprise-level league platform managing 500+ player records, match schedules, and real-time standings. Full CRUD, authentication, and role-based access control.</p>
-            <p class="card-stack">Python · Django · MySQL · Bootstrap 5 · Git</p>
+            <h4>FKFSYS: FKF Meru Football League System</h4>
+            <p class="card-desc">Automates football management for the FKF Meru League. Team registration with M-Pesa payment integration, three-zone match organisation, digital referee reports tracking goals and cards, admin approval workflows, and real-time standings. Responsive design with team colours.</p>
+            <p class="card-stack">Python · Django · MySQL · Bootstrap 5 · M-Pesa API</p>
             <div class="card-tags">
               <span class="tag-python">Python</span>
               <span class="tag-django">Django</span>
               <span class="tag-cloud">Full Stack</span>
             </div>
-            <a href="{% url 'portfolio-details' %}" class="card-footer-link">
-              <i class="bi bi-arrow-right-circle"></i> View Details
+            <a href="https://github.com/Emannuh/FKFSYS" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
         </div>
 
-        <!-- Project 2: Azure Security -->
+        <!-- Project 2: SafeSpace -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-fullstack">
+          <div class="project-card">
+            <div class="card-icon purple"><i class="bi bi-heart-pulse"></i></div>
+            <h4>SafeSpace</h4>
+            <p class="card-desc">A Python-based web application providing a safe, supportive digital environment. Built with Django, featuring user authentication, content management, and a clean, accessible interface focused on mental wellbeing.</p>
+            <p class="card-stack">Python · Django · Bootstrap 5 · SQLite</p>
+            <div class="card-tags">
+              <span class="tag-python">Python</span>
+              <span class="tag-django">Django</span>
+              <span class="tag-cloud">Full Stack</span>
+            </div>
+            <a href="https://github.com/Emannuh/SafeSpace" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: SecureScan -->
         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-security">
           <div class="project-card">
-            <div class="card-icon blue"><i class="bi bi-shield-lock"></i></div>
+            <div class="card-icon red"><i class="bi bi-shield-lock"></i></div>
+            <h4>SecureScan</h4>
+            <p class="card-desc">Python security scanning tool for automated vulnerability assessment. Analyses targets for common security misconfigurations and exposures. Part of a broader defence-in-depth toolset built during Cyber Shujaa cloud security training.</p>
+            <p class="card-stack">Python · Security Assessment · Automation</p>
+            <div class="card-tags">
+              <span class="tag-python">Python</span>
+              <span class="tag-security">Security</span>
+              <span class="tag-devops">Automation</span>
+            </div>
+            <a href="https://github.com/Emannuh/SecureScan" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: EMNet -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-devops">
+          <div class="project-card">
+            <div class="card-icon blue"><i class="bi bi-router-fill"></i></div>
+            <h4>EMNet</h4>
+            <p class="card-desc">Python networking project covering network configuration, monitoring, and automation. Demonstrates CCNA-level networking concepts including routing, switching, and network management, implemented programmatically.</p>
+            <p class="card-stack">Python · Networking · Automation · Shell Scripting</p>
+            <div class="card-tags">
+              <span class="tag-python">Python</span>
+              <span class="tag-security">Networking</span>
+              <span class="tag-devops">Automation</span>
+            </div>
+            <a href="https://github.com/Emannuh/EMNet" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5: VETA -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-fullstack">
+          <div class="project-card">
+            <div class="card-icon orange"><i class="bi bi-mortarboard"></i></div>
+            <h4>VETA</h4>
+            <p class="card-desc">Python-based technical and vocational education platform. Manages courses, student records, and academic workflows. Built to digitise TVET administration with a clean Django backend and responsive interface.</p>
+            <p class="card-stack">Python · Django · MySQL · Bootstrap 5</p>
+            <div class="card-tags">
+              <span class="tag-python">Python</span>
+              <span class="tag-django">Django</span>
+              <span class="tag-cloud">Full Stack</span>
+            </div>
+            <a href="https://github.com/Emannuh/VETA" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6: CI/CD Pipeline -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-devops">
+          <div class="project-card">
+            <div class="card-icon teal"><i class="bi bi-arrow-repeat"></i></div>
+            <h4>CI/CD Pipeline on AWS EKS</h4>
+            <p class="card-desc">End-to-end deployment pipeline using GitHub Actions and AWS CodePipeline. Containerised workloads on Elastic Kubernetes Service, accelerating software delivery by 70% with automated testing and rolling deployments.</p>
+            <p class="card-stack">GitHub Actions · AWS CodePipeline · EKS · Docker · Kubernetes</p>
+            <div class="card-tags">
+              <span class="tag-devops">DevOps</span>
+              <span class="tag-aws">AWS</span>
+              <span class="tag-k8s">Kubernetes</span>
+            </div>
+            <a href="https://github.com/Emannuh/ci-cd-pipeline-" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 7: KYISA -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-fullstack">
+          <div class="project-card">
+            <div class="card-icon green"><i class="bi bi-globe2"></i></div>
+            <h4>KYISA</h4>
+            <p class="card-desc">HTML-based web project. A clean, responsive front-end application showcasing modern layout, accessibility considerations, and cross-browser compatibility.</p>
+            <p class="card-stack">HTML5 · CSS3 · JavaScript · Bootstrap</p>
+            <div class="card-tags">
+              <span class="tag-cloud">Front End</span>
+            </div>
+            <a href="https://github.com/Emannuh/KYISA" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 8: Tele Afya -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud">
+          <div class="project-card">
+            <div class="card-icon teal"><i class="bi bi-hospital"></i></div>
+            <h4>Tele Afya: Healthcare API</h4>
+            <p class="card-desc">High-performance healthcare API deployed across AWS and Huawei Cloud. Optimised for 10,000+ concurrent users with 99.9% uptime on a MERN stack, enabling secure and reliable health service delivery.</p>
+            <p class="card-stack">Node.js · Express · MongoDB · AWS · Huawei Cloud</p>
+            <div class="card-tags">
+              <span class="tag-cloud">Cloud</span>
+              <span class="tag-aws">AWS</span>
+              <span class="tag-api">API</span>
+            </div>
+            <a href="https://github.com/Emannuh/teleafya" target="_blank" class="card-footer-link">
+              <i class="bi bi-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 9: Azure Defense-in-Depth -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-security">
+          <div class="project-card">
+            <div class="card-icon blue"><i class="bi bi-shield-fill-check"></i></div>
             <h4>Azure Defense-in-Depth Architecture</h4>
-            <p class="card-desc">Multi-tier Azure infrastructure with Sentinel SIEM, Defender for Cloud, JIT VM access, and VNet segmentation — reducing attack surface by 80%.</p>
+            <p class="card-desc">Multi-tier Azure infrastructure with Sentinel SIEM, Defender for Cloud, JIT VM access, and VNet segmentation. Reduced attack surface by 80% through proactive threat detection and Zero Trust access controls.</p>
             <p class="card-stack">Microsoft Sentinel · Defender · NSGs · ASGs · ARM Templates</p>
             <div class="card-tags">
               <span class="tag-azure">Azure</span>
@@ -185,86 +310,14 @@
           </div>
         </div>
 
-        <!-- Project 3: CI/CD Pipeline -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-devops">
-          <div class="project-card">
-            <div class="card-icon orange"><i class="bi bi-arrow-repeat"></i></div>
-            <h4>CI/CD Pipeline on AWS EKS</h4>
-            <p class="card-desc">End-to-end deployment pipeline using GitHub Actions and AWS CodePipeline. Containerized workloads on EKS — accelerating software delivery by 70%.</p>
-            <p class="card-stack">GitHub Actions · AWS CodePipeline · EKS · Docker · Kubernetes</p>
-            <div class="card-tags">
-              <span class="tag-devops">DevOps</span>
-              <span class="tag-aws">AWS</span>
-              <span class="tag-k8s">Kubernetes</span>
-            </div>
-            <a href="https://github.com/Emannuh" target="_blank" class="card-footer-link">
-              <i class="bi bi-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 4: Tele Afya -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud">
-          <div class="project-card">
-            <div class="card-icon teal"><i class="bi bi-heart-pulse"></i></div>
-            <h4>Tele Afya: Healthcare API</h4>
-            <p class="card-desc">High-performance healthcare API deployed across AWS and Huawei Cloud. Optimised for 10,000+ concurrent users with 99.9% uptime on a MERN stack.</p>
-            <p class="card-stack">Node.js · Express · MongoDB · AWS · Huawei Cloud</p>
-            <div class="card-tags">
-              <span class="tag-cloud">Cloud</span>
-              <span class="tag-aws">AWS</span>
-              <span class="tag-api">API</span>
-            </div>
-            <a href="https://github.com/Emannuh" target="_blank" class="card-footer-link">
-              <i class="bi bi-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 5: GDPR Governance -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-security">
-          <div class="project-card">
-            <div class="card-icon purple"><i class="bi bi-file-earmark-check"></i></div>
-            <h4>GDPR Cloud Governance: ARM Templates</h4>
-            <p class="card-desc">Automated GDPR-compliant data classification, database auditing, and real-time incident response across Azure environments using Infrastructure-as-Code.</p>
-            <p class="card-stack">Azure · ARM Templates · Terraform · Azure Policy · SQL Auditing</p>
-            <div class="card-tags">
-              <span class="tag-azure">Azure</span>
-              <span class="tag-security">Compliance</span>
-              <span class="tag-devops">IaC</span>
-            </div>
-            <a href="https://github.com/Emannuh" target="_blank" class="card-footer-link">
-              <i class="bi bi-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 6: AKS Pipeline -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-devops">
-          <div class="project-card">
-            <div class="card-icon red"><i class="bi bi-boxes"></i></div>
-            <h4>AKS Secure Container Deployment Pipeline</h4>
-            <p class="card-desc">Secure containerized workloads on Azure Kubernetes Service with ACR image scanning, RBAC enforcement, and automated compliance policy checks.</p>
-            <p class="card-stack">AKS · Azure Container Registry · RBAC · Image Scanning · Kubernetes</p>
-            <div class="card-tags">
-              <span class="tag-k8s">Kubernetes</span>
-              <span class="tag-azure">Azure</span>
-              <span class="tag-devops">DevOps</span>
-            </div>
-            <a href="https://github.com/Emannuh" target="_blank" class="card-footer-link">
-              <i class="bi bi-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-
       </div><!-- End isotope container -->
     </div>
 
     <!-- GitHub CTA -->
     <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
-      <p class="text-muted mb-3" style="font-size:0.9rem;">
+      <p style="font-size:0.9rem; color: rgba(255,255,255,0.55); margin-bottom: 16px;">
         <span class="lang-dot" style="background:#3572A5; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:6px;"></span>
-        <strong>Python</strong> is the primary language across my repositories
+        <strong style="color:rgba(255,255,255,0.85);">Python</strong> is the primary language across my repositories
       </p>
       <a href="https://github.com/Emannuh" target="_blank" class="btn btn-primary btn-lg">
         <i class="bi bi-github me-2"></i>View All Projects on GitHub

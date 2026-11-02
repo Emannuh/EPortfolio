@@ -1,0 +1,24 @@
+# Environment variables — never commit secrets
+.env
+*.env
+
+# Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+staticfiles/
+media/
+
+# Static export output
+dist/
+
+# IDE and OS
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# Kiro session data (keep .kiro/ spec files but not session cache)
+.kiro/sessions/

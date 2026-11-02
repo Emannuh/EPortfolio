@@ -1,21 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Emmanuel Maingi | Tech Support & DevOps Engineer{% endblock %}
+{% block title %}Emmanuel Maingi | Software & Cloud Engineer{% endblock %}
 {% block body_class %}index-page{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* ── Hero photo sizing ── */
+  .hero .image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .hero .image-wrapper img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 24px;
+    display: block;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Decorative border accent behind the photo */
+  .hero .image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: 12px;
+    bottom: 12px;
+    border: 3px solid var(--accent-color, #0d6efd);
+    border-radius: 28px;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  .hero .image-wrapper img {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Keep floating cards on top */
+  .hero .floating-elements {
+    z-index: 2;
+  }
+
+  /* Center the image column on mobile */
+  @media (max-width: 991px) {
+    .hero .image-wrapper {
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .hero .image-wrapper img {
+      height: 380px;
+    }
+  }
+</style>
+{% endblock %}
 
 {% block content %}
 <section id="hero" class="hero section">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row gy-4 align-items-center">
+
+      <!-- Text side -->
       <div class="col-lg-6 order-2 order-lg-1">
         <div class="hero-content">
           <h1 data-aos="fade-up" data-aos-delay="200">Hello, I'm <span class="highlight">Emmanuel Maingi</span></h1>
           <h2 data-aos="fade-up" data-aos-delay="300">
-            <span class="typed" data-typed-items="Software Engineer, Cloud Engineer, DevOps Engineer, Linux & Azure Specialist"></span>
+            <span class="typed" data-typed-items="Software Engineer, DevOps Engineer, Cloud Engineer, Data Analyst, Linux & Azure Specialist"></span>
           </h2>
           <p data-aos="fade-up" data-aos-delay="400">
-            Software & Cloud Engineer with 3+ years building secure enterprise solutions across cloud platforms, Linux/Windows systems, and network infrastructure — based in Nairobi, Kenya.
+            Full Stack Software and DevOps Engineer with 4+ years building, securing and operating cloud-native applications across institutional, government and global enterprise environments. Based in Nairobi, Kenya.
           </p>
           <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
             <a href="{% url 'portfolio' %}" class="btn btn-primary">View My Work</a>
@@ -27,10 +86,14 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 order-1 order-lg-2">
+
+      <!-- Photo side -->
+      <div class="col-lg-6 order-1 order-lg-2 text-center text-lg-end">
         <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
           <div class="image-wrapper">
-            <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}" alt="Emmanuel Maingi" class="img-fluid">
+            <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}"
+                 alt="Emmanuel Maingi, Software and Cloud Engineer"
+                 class="img-fluid">
             <div class="floating-elements">
               <div class="floating-card design" data-aos="fade-left" data-aos-delay="700">
                 <i class="bi bi-code-slash"></i>
@@ -48,6 +111,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
