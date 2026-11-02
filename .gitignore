@@ -20,5 +20,8 @@ dist/
 *.DS_Store
 Thumbs.db
 
+# Virtual environment
+.venv/
+
 # Kiro session data (keep .kiro/ spec files but not session cache)
 .kiro/sessions/
