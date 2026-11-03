@@ -764,6 +764,23 @@
   font-weight: 600;
 }
 
+.dr-referee-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.dr-referee-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid rgba(19,135,193,0.4);
+  flex-shrink: 0;
+}
+
 .dr-lessons {
   background: #0d1117;
   border: 1px solid rgba(255,255,255,0.07);

@@ -47,7 +47,7 @@
           <p>
             You are the on-call Software Engineer for Nightwatch Systems.
             You have full access to metrics, logs, the deployment history, and security dashboards.
-            No one else is available right now — the decision is yours.
+            No one else is available right now. The decision is yours.
           </p>
           <p style="margin-top:12px; font-size:0.8rem; color: rgba(231,242,247,0.5);">
             There are no trick questions. Each decision reflects real engineering principles.
@@ -179,12 +179,12 @@
           <div class="dr-log-line"><span class="log-time">[02:31:47]</span> <span class="log-warn">WARN </span> <span class="log-msg">p95 latency threshold exceeded: 245ms (threshold: 200ms)</span></div>
           <div class="dr-log-line"><span class="log-time">[02:33:02]</span> <span class="log-error">ERROR</span> <span class="log-msg">HTTP 503: upstream timeout on /api/v2/users/profile (timeout: 5000ms)</span></div>
           <div class="dr-log-line"><span class="log-time">[02:34:18]</span> <span class="log-error">ERROR</span> <span class="log-msg">HTTP 503: upstream timeout on /api/v2/dashboard (timeout: 5000ms)</span></div>
-          <div class="dr-log-line"><span class="log-time">[02:35:01]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 185.220.101.47 — classified: TOR exit node (SIMULATED)</span></div>
-          <div class="dr-log-line"><span class="log-time">[02:35:44]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 94.102.49.193 — classified: known scanner (SIMULATED)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:35:01]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 185.220.101.47 · classified: TOR exit node (SIMULATED)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:35:44]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 94.102.49.193 · classified: known scanner (SIMULATED)</span></div>
           <div class="dr-log-line"><span class="log-time">[02:36:12]</span> <span class="log-error">ERROR</span> <span class="log-msg">DB query timeout (8012ms): SELECT u.*, s.* FROM user_sessions s JOIN analytics_events a ON s.user_id = a.user_id WHERE s.created_at > NOW()-INTERVAL 24 HOUR</span></div>
           <div class="dr-log-line"><span class="log-time">[02:36:14]</span> <span class="log-error">ERROR</span> <span class="log-msg">DB query timeout (8047ms): SELECT * FROM analytics_events WHERE created_at > NOW()-INTERVAL 7 DAY ORDER BY created_at DESC</span></div>
-          <div class="dr-log-line"><span class="log-time">[02:37:55]</span> <span class="log-crit">CRIT </span> <span class="log-msg">Error rate exceeded 10% threshold — ALERT FIRED — SLA breach in 22 min</span></div>
-          <div class="dr-log-line"><span class="log-time">[02:38:30]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 198.50.200.131 — classified: anonymous proxy (SIMULATED)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:37:55]</span> <span class="log-crit">CRIT </span> <span class="log-msg">Error rate exceeded 10% threshold · ALERT FIRED · SLA breach in 22 min</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:38:30]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 198.50.200.131 · classified: anonymous proxy (SIMULATED)</span></div>
         </div>
       </div>
 
@@ -196,7 +196,7 @@
         </div>
         <div class="dr-diff-body">
           <div class="diff-add">+ Added: /api/v2/dashboard endpoint (analytics overview)</div>
-          <div class="diff-add">+ Added: /api/v2/users/profile — joins user_sessions with analytics_events</div>
+          <div class="diff-add">+ Added: /api/v2/users/profile (joins user_sessions with analytics_events)</div>
           <div class="diff-mod">~ Modified: user_sessions JOIN analytics_events ON user_id (no index on analytics_events.created_at)</div>
           <div class="diff-mod">~ Modified: background worker poll interval: 30s → 5s</div>
           <div class="diff-ctx">  Unchanged: authentication, rate limiting, caching layer</div>
@@ -206,7 +206,7 @@
 
       <!-- Security indicators -->
       <div class="dr-security-panel" aria-label="Security indicators">
-        <div class="dr-security-title"><i class="bi bi-shield-exclamation" aria-hidden="true"></i> Security Indicators — 3 Flagged IPs (SIMULATED DATA)</div>
+        <div class="dr-security-title"><i class="bi bi-shield-exclamation" aria-hidden="true"></i> Security Indicators · 3 Flagged IPs (SIMULATED DATA)</div>
         <table class="dr-ip-table">
           <thead>
             <tr><th>IP Address</th><th>Classification</th><th>Requests (last 15min)</th><th>Threat Level</th></tr>
@@ -391,7 +391,10 @@
       <!-- Referee quote -->
       <div class="dr-referee-quote">
         <blockquote id="referee-quote"></blockquote>
-        <cite>Emmanuel Maingi &nbsp;·&nbsp; Certified National Football Referee &amp; Software Engineer</cite>
+        <div class="dr-referee-author">
+          <img src="{% static 'img/profile/emmanuel-maingi-2.jpg' %}" alt="Emmanuel Maingi" class="dr-referee-avatar">
+          <cite>Emmanuel Maingi &nbsp;·&nbsp; Certified National Football Referee &amp; Software Engineer</cite>
+        </div>
       </div>
 
       <!-- Actions -->
