@@ -33,16 +33,7 @@
       </div>
       <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="250">
         <figure class="profile-figure text-center text-lg-end">
-          <div style="display:flex; gap:14px; justify-content:flex-end; align-items:flex-end; flex-wrap:wrap;">
-            <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}"
-                 alt="Emmanuel Maingi"
-                 class="img-fluid profile-photo"
-                 style="flex:1; min-width:0; max-width:58%; border-radius:16px;">
-            <img src="{% static 'img/profile/emmanuel-maingi-2.jpg' %}"
-                 alt="Emmanuel Maingi"
-                 class="img-fluid"
-                 style="flex:1; min-width:0; max-width:38%; border-radius:16px; object-fit:cover; object-position:top center; align-self:flex-start;">
-          </div>
+          <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}" alt="Emmanuel Maingi" class="img-fluid profile-photo">
         </figure>
       </div>
     </div>
@@ -154,9 +145,19 @@
       </div>
     </div>
 
-    <blockquote class="personal-quote text-center mb-5" data-aos="fade-down" data-aos-delay="200">
-      <p>"Building resilient, secure infrastructure. One pipeline at a time."</p>
-    </blockquote>
+    <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-8">
+        <blockquote class="personal-quote" style="text-align:left; margin:0; border-left:4px solid #1387c1; padding-left:24px;">
+          <p style="font-size:1.1rem; font-style:italic; color:rgba(231,242,247,0.85); margin-bottom:12px;">"Building resilient, secure infrastructure. One pipeline at a time."</p>
+          <footer style="font-size:0.82rem; color:#1387c1; font-weight:600;">Emmanuel Maingi &nbsp;·&nbsp; Software Engineer, Nairobi</footer>
+        </blockquote>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+        <img src="{% static 'img/profile/emmanuel-maingi-2.jpg' %}"
+             alt="Emmanuel Maingi"
+             style="width:140px; height:140px; object-fit:cover; object-position:top center; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.35);">
+      </div>
+    </div>
 
     <div class="row g-3 justify-content-center">
       <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="120">
