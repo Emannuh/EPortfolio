@@ -50,9 +50,7 @@
           <li><a href="{% url 'resume' %}" {% if request.resolver_match.url_name == 'resume' %}class="active"{% endif %}>Resume</a></li>
           <li><a href="{% url 'services' %}" {% if request.resolver_match.url_name == 'services' %}class="active"{% endif %}>Services</a></li>
           <li><a href="{% url 'portfolio' %}" {% if request.resolver_match.url_name == 'portfolio' %}class="active"{% endif %}>Portfolio</a></li>
-          <li><a href="{% url 'decision-room' %}" {% if request.resolver_match.url_name == 'decision-room' %}class="active"{% endif %}>
-            Decision Room <span class="dr-nav-badge">Try It</span>
-          </a></li>
+          <li><a href="{% url 'decision-room' %}" {% if request.resolver_match.url_name == 'decision-room' %}class="active"{% endif %} style="white-space:nowrap;">Decision Room <span class="dr-nav-badge">Try It</span></a></li>
           <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
