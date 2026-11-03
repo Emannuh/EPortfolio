@@ -57,7 +57,14 @@
             {% endfor %}
           {% endif %}
 
-          <form method="post" action="{% url 'contact' %}">
+          <!-- DEPLOYMENT NOTE:
+               In Django development mode, this form posts to the Django contact view.
+               For static/Amplify hosting, replace action with your Formspree endpoint:
+               action="https://formspree.io/f/YOUR_ENDPOINT_ID"
+               and remove the csrf_token and messages block.
+               Until configured, the direct email link above is the reliable contact method.
+          -->
+          <form id="contact-form" method="post" action="{% url 'contact' %}">
             {% csrf_token %}
             <div class="row gy-4">
               <div class="col-md-6">
