@@ -20,6 +20,8 @@ urlpatterns = [
                  distill_func=None),
     distill_path('portfolio-details/', views.portfolio_details, name='portfolio-details',
                  distill_func=None),
+    distill_path('decision-room/', views.decision_room, name='decision-room',
+                 distill_func=None),
     distill_path('contact/', views.contact, name='contact',
                  distill_func=None),
 ]

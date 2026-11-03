@@ -30,6 +30,10 @@ def portfolio_details(request):
     return render(request, 'portfolio-details.html')
 
 
+def decision_room(request):
+    return render(request, 'decision-room.html')
+
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')

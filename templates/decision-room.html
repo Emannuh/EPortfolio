@@ -1,0 +1,421 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}The Engineer's Decision Room | Emmanuel Maingi{% endblock %}
+{% block meta_description %}An interactive engineering incident simulation. Diagnose a production outage, make operational decisions, and see how your choices affect system reliability and security.{% endblock %}
+{% block body_class %}decision-room-page{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/decision-room.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="decision-room-app" role="main" aria-label="The Engineer's Decision Room">
+  <div class="container">
+
+    <!-- Disclaimer -->
+    <div class="dr-disclaimer" role="note">
+      <i class="bi bi-shield-exclamation me-2" aria-hidden="true"></i>
+      SIMULATION ONLY &nbsp;·&nbsp; All systems, metrics, IP addresses, and incident data are entirely fictional and created for this interactive experience.
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         PHASE 0: BRIEFING
+    ══════════════════════════════════════════════════════ -->
+    <div id="phase-briefing" class="dr-phase active" role="region" aria-label="Mission Briefing" aria-live="polite">
+
+      <div class="dr-section-label">Mission Briefing</div>
+      <h1 class="dr-title">The Engineer's Decision Room</h1>
+      <p class="dr-subtitle">
+        A production incident is unfolding. You are the on-call engineer.
+        Investigate the evidence, make operational decisions, and restore service before the SLA clock runs out.
+        Every choice has consequences.
+      </p>
+
+      <div class="dr-briefing-grid">
+        <div class="dr-info-card">
+          <h4>Incident Summary</h4>
+          <div class="dr-stat-row"><span class="dr-stat-key">Time (UTC)</span><span class="dr-stat-val warning">02:47</span></div>
+          <div class="dr-stat-row"><span class="dr-stat-key">System</span><span class="dr-stat-val">nightwatch-api</span></div>
+          <div class="dr-stat-row"><span class="dr-stat-key">Status</span><span class="dr-stat-val critical">DEGRADED</span></div>
+          <div class="dr-stat-row"><span class="dr-stat-key">p95 Latency</span><span class="dr-stat-val critical">889 ms ↑ 643%</span></div>
+          <div class="dr-stat-row"><span class="dr-stat-key">Error Rate</span><span class="dr-stat-val critical">12.3% ↑</span></div>
+          <div class="dr-stat-row"><span class="dr-stat-key">Last Deploy</span><span class="dr-stat-val warning">v2.4.1 (18 min ago)</span></div>
+        </div>
+        <div class="dr-info-card">
+          <h4>Your Role</h4>
+          <p>
+            You are the on-call Software Engineer for Nightwatch Systems.
+            You have full access to metrics, logs, the deployment history, and security dashboards.
+            No one else is available right now — the decision is yours.
+          </p>
+          <p style="margin-top:12px; font-size:0.8rem; color: rgba(231,242,247,0.5);">
+            There are no trick questions. Each decision reflects real engineering principles.
+            The system will respond to what you choose.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 16px;">
+        <button id="btn-start" class="btn-dr-enter" aria-label="Begin the incident simulation">
+          <i class="bi bi-terminal-fill" aria-hidden="true"></i>
+          Begin Incident Response
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div><!-- /phase-briefing -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PHASE 1: ASSESS THE SITUATION
+    ══════════════════════════════════════════════════════ -->
+    <div id="phase-1" class="dr-phase" role="region" aria-label="Stage 1: Assess the Situation" aria-live="polite">
+
+      <div class="dr-progress-bar-wrap" aria-hidden="true">
+        <div class="dr-progress-bar-fill" style="width: 25%"></div>
+      </div>
+
+      <div class="dr-section-label">Stage 1 of 3</div>
+      <h2 class="dr-title">Assess the Situation</h2>
+      <p class="dr-subtitle">Alerts have been firing for 4 minutes. The ops channel is escalating. Before you act, you need to understand what you're dealing with. What is your first move?</p>
+
+      <!-- Live metrics dashboard -->
+      <div class="dr-dashboard" aria-label="Live system metrics">
+        <div class="dr-dashboard-header">
+          <span class="dr-dashboard-title">nightwatch-api &nbsp; <span class="dr-status-badge dr-status-degraded"><span class="dr-status-dot" aria-hidden="true"></span>DEGRADED</span></span>
+          <span style="font-size:0.7rem; color: rgba(231,242,247,0.35); font-family:'JetBrains Mono',monospace;">02:47:14 UTC</span>
+        </div>
+        <div class="dr-metrics-grid">
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">p95 Latency</div>
+            <div class="dr-metric-value crit">889ms</div>
+            <div class="dr-metric-delta up">↑ +643% vs baseline</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">HTTP 5xx Rate</div>
+            <div class="dr-metric-value crit">12.3%</div>
+            <div class="dr-metric-delta up">↑ from 0.2% (normal)</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">Throughput</div>
+            <div class="dr-metric-value warn">1,240 req/s</div>
+            <div class="dr-metric-delta">baseline: 1,100 req/s</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">CPU Usage</div>
+            <div class="dr-metric-value warn">78%</div>
+            <div class="dr-metric-delta up">↑ elevated</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">Memory</div>
+            <div class="dr-metric-value ok">61%</div>
+            <div class="dr-metric-delta">stable</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">Active Pods</div>
+            <div class="dr-metric-value ok">4 / 4</div>
+            <div class="dr-metric-delta">all running</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dr-decisions">
+        <div class="dr-decisions-label">Your decision</div>
+        <div class="dr-decision-grid" role="group" aria-label="Choose your first action">
+          <button class="dr-btn" data-decision="A1" aria-label="Investigate application metrics and DB performance">
+            <span class="dr-btn-key">OPTION A</span>
+            <span class="dr-btn-text">Investigate application metrics and DB performance in detail</span>
+            <i class="bi bi-graph-up dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="A2" aria-label="Review the deployment diff and changelogs for v2.4.1">
+            <span class="dr-btn-key">OPTION B</span>
+            <span class="dr-btn-text">Review the deployment diff and changelogs for v2.4.1</span>
+            <i class="bi bi-git dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="A3" aria-label="Immediately roll back to v2.3.9 without further investigation">
+            <span class="dr-btn-key">OPTION C</span>
+            <span class="dr-btn-text">Immediately roll back to v2.3.9 without further investigation</span>
+            <i class="bi bi-arrow-counterclockwise dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="A4" aria-label="Page the development team and wait for their response">
+            <span class="dr-btn-key">OPTION D</span>
+            <span class="dr-btn-text">Page the development team and wait for their response</span>
+            <i class="bi bi-people dr-btn-icon" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="consequence-1" class="dr-consequence" role="alert" aria-live="assertive"></div>
+        <div id="next-1" style="text-align:right; margin-top:16px; display:none;">
+          <button id="btn-next-1" class="btn-dr-replay" aria-label="Proceed to stage 2">
+            Proceed to Investigation <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /phase-1 -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PHASE 2: INVESTIGATE AND DIAGNOSE
+    ══════════════════════════════════════════════════════ -->
+    <div id="phase-2" class="dr-phase" role="region" aria-label="Stage 2: Investigate and Diagnose" aria-live="polite">
+
+      <div class="dr-progress-bar-wrap" aria-hidden="true">
+        <div class="dr-progress-bar-fill" style="width: 60%"></div>
+      </div>
+
+      <div class="dr-section-label">Stage 2 of 3</div>
+      <h2 class="dr-title">Investigate and Diagnose</h2>
+      <p class="dr-subtitle" id="p2-subtitle">You have access to the application logs and the deployment changelog. Study the evidence carefully.</p>
+
+      <!-- Log stream -->
+      <div class="dr-log-panel" aria-label="Application log stream">
+        <div class="dr-log-header">
+          <span class="dr-log-title">application logs &nbsp;·&nbsp; nightwatch-api</span>
+          <span class="dr-log-live"><span class="dr-status-dot" aria-hidden="true"></span> LIVE</span>
+        </div>
+        <div class="dr-log-body" id="log-stream" role="log" aria-label="Log entries" aria-live="off">
+          <div class="dr-log-line"><span class="log-time">[02:31:14]</span> <span class="log-info">INFO </span> <span class="log-msg">Deployment v2.4.1 completed. 3 containers restarted.</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:31:47]</span> <span class="log-warn">WARN </span> <span class="log-msg">p95 latency threshold exceeded: 245ms (threshold: 200ms)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:33:02]</span> <span class="log-error">ERROR</span> <span class="log-msg">HTTP 503: upstream timeout on /api/v2/users/profile (timeout: 5000ms)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:34:18]</span> <span class="log-error">ERROR</span> <span class="log-msg">HTTP 503: upstream timeout on /api/v2/dashboard (timeout: 5000ms)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:35:01]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 185.220.101.47 — classified: TOR exit node (SIMULATED)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:35:44]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 94.102.49.193 — classified: known scanner (SIMULATED)</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:36:12]</span> <span class="log-error">ERROR</span> <span class="log-msg">DB query timeout (8012ms): SELECT u.*, s.* FROM user_sessions s JOIN analytics_events a ON s.user_id = a.user_id WHERE s.created_at > NOW()-INTERVAL 24 HOUR</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:36:14]</span> <span class="log-error">ERROR</span> <span class="log-msg">DB query timeout (8047ms): SELECT * FROM analytics_events WHERE created_at > NOW()-INTERVAL 7 DAY ORDER BY created_at DESC</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:37:55]</span> <span class="log-crit">CRIT </span> <span class="log-msg">Error rate exceeded 10% threshold — ALERT FIRED — SLA breach in 22 min</span></div>
+          <div class="dr-log-line"><span class="log-time">[02:38:30]</span> <span class="log-warn">WARN </span> <span class="log-msg">Unusual traffic: 198.50.200.131 — classified: anonymous proxy (SIMULATED)</span></div>
+        </div>
+      </div>
+
+      <!-- Deployment diff -->
+      <div class="dr-diff-panel" aria-label="Deployment changelog">
+        <div class="dr-diff-header">
+          <span>deployment changelog</span>
+          <span class="dr-diff-version">v2.3.9 → v2.4.1</span>
+        </div>
+        <div class="dr-diff-body">
+          <div class="diff-add">+ Added: /api/v2/dashboard endpoint (analytics overview)</div>
+          <div class="diff-add">+ Added: /api/v2/users/profile — joins user_sessions with analytics_events</div>
+          <div class="diff-mod">~ Modified: user_sessions JOIN analytics_events ON user_id (no index on analytics_events.created_at)</div>
+          <div class="diff-mod">~ Modified: background worker poll interval: 30s → 5s</div>
+          <div class="diff-ctx">  Unchanged: authentication, rate limiting, caching layer</div>
+          <div class="diff-ctx">  Unchanged: load balancer config, Kubernetes resource limits</div>
+        </div>
+      </div>
+
+      <!-- Security indicators -->
+      <div class="dr-security-panel" aria-label="Security indicators">
+        <div class="dr-security-title"><i class="bi bi-shield-exclamation" aria-hidden="true"></i> Security Indicators — 3 Flagged IPs (SIMULATED DATA)</div>
+        <table class="dr-ip-table">
+          <thead>
+            <tr><th>IP Address</th><th>Classification</th><th>Requests (last 15min)</th><th>Threat Level</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>185.220.101.47</td><td>TOR Exit Node</td><td>847</td><td class="threat-high">HIGH</td></tr>
+            <tr><td>94.102.49.193</td><td>Known Scanner</td><td>312</td><td class="threat-high">HIGH</td></tr>
+            <tr><td>198.50.200.131</td><td>Anonymous Proxy</td><td>156</td><td>MEDIUM</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dr-decisions">
+        <div class="dr-decisions-label">Based on the evidence, what is the root cause?</div>
+        <div class="dr-decision-grid" role="group" aria-label="Choose your diagnosis">
+          <button class="dr-btn" data-decision="B1" aria-label="Unindexed database join introduced in v2.4.1 is causing query timeouts">
+            <span class="dr-btn-key">OPTION A</span>
+            <span class="dr-btn-text">Unindexed database JOIN in v2.4.1 is causing query timeouts under load</span>
+            <i class="bi bi-database-exclamation dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="B2" aria-label="External DDoS attack from the flagged IPs is the primary cause">
+            <span class="dr-btn-key">OPTION B</span>
+            <span class="dr-btn-text">External DDoS attack from the 3 flagged IPs is the primary cause</span>
+            <i class="bi bi-shield-exclamation dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="B3" aria-label="Memory leak in the new container image is causing progressive degradation">
+            <span class="dr-btn-key">OPTION C</span>
+            <span class="dr-btn-text">Memory leak in the new container image is causing progressive degradation</span>
+            <i class="bi bi-memory dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="B4" aria-label="The load balancer is misconfigured and routing traffic inefficiently">
+            <span class="dr-btn-key">OPTION D</span>
+            <span class="dr-btn-text">Load balancer misconfiguration is routing traffic inefficiently</span>
+            <i class="bi bi-diagram-3 dr-btn-icon" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="consequence-2" class="dr-consequence" role="alert" aria-live="assertive"></div>
+        <div id="next-2" style="text-align:right; margin-top:16px; display:none;">
+          <button id="btn-next-2" class="btn-dr-replay" aria-label="Proceed to stage 3">
+            Proceed to Response <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /phase-2 -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PHASE 3: RESPOND
+    ══════════════════════════════════════════════════════ -->
+    <div id="phase-3" class="dr-phase" role="region" aria-label="Stage 3: Respond" aria-live="polite">
+
+      <div class="dr-progress-bar-wrap" aria-hidden="true">
+        <div class="dr-progress-bar-fill" style="width: 85%"></div>
+      </div>
+
+      <div class="dr-section-label">Stage 3 of 3</div>
+      <h2 class="dr-title">Execute the Response</h2>
+      <p class="dr-subtitle">You have your diagnosis. Service is still degraded. The SLA clock shows 18 minutes remaining. What is your response?</p>
+
+      <!-- Updated metrics showing ongoing incident -->
+      <div class="dr-dashboard" aria-label="Updated system metrics">
+        <div class="dr-dashboard-header">
+          <span class="dr-dashboard-title">nightwatch-api &nbsp; <span class="dr-status-badge dr-status-critical"><span class="dr-status-dot" aria-hidden="true"></span>CRITICAL</span></span>
+          <span style="font-size:0.7rem; color: rgba(231,242,247,0.35); font-family:'JetBrains Mono',monospace;">02:51:02 UTC &nbsp;·&nbsp; SLA: 18 min remaining</span>
+        </div>
+        <div class="dr-metrics-grid">
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">p95 Latency</div>
+            <div class="dr-metric-value crit">1,204ms</div>
+            <div class="dr-metric-delta up">↑ still climbing</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">HTTP 5xx Rate</div>
+            <div class="dr-metric-value crit">18.7%</div>
+            <div class="dr-metric-delta up">↑ worsening</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">DB Connections</div>
+            <div class="dr-metric-value crit">498 / 500</div>
+            <div class="dr-metric-delta up">↑ pool near-exhausted</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">CPU</div>
+            <div class="dr-metric-value crit">91%</div>
+            <div class="dr-metric-delta up">↑ critical</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">Memory</div>
+            <div class="dr-metric-value warn">64%</div>
+            <div class="dr-metric-delta">mildly elevated</div>
+          </div>
+          <div class="dr-metric-cell">
+            <div class="dr-metric-label">Active Pods</div>
+            <div class="dr-metric-value ok">4 / 4</div>
+            <div class="dr-metric-delta">all running</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dr-decisions">
+        <div class="dr-decisions-label">Your response</div>
+        <div class="dr-decision-grid" role="group" aria-label="Choose your response action">
+          <button class="dr-btn" data-decision="C1" aria-label="Roll back v2.4.1, add missing database index, redeploy with fix">
+            <span class="dr-btn-key">OPTION A</span>
+            <span class="dr-btn-text">Roll back v2.4.1, add the missing database index, redeploy with the fix</span>
+            <i class="bi bi-wrench-adjustable dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="C2" aria-label="Scale out to 8 pods to absorb load while keeping v2.4.1 running">
+            <span class="dr-btn-key">OPTION B</span>
+            <span class="dr-btn-text">Scale out to 8 pods to absorb load while keeping v2.4.1 running</span>
+            <i class="bi bi-boxes dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="C3" aria-label="Block the 3 suspicious IPs and scale out instances">
+            <span class="dr-btn-key">OPTION C</span>
+            <span class="dr-btn-text">Block the 3 suspicious IPs in the WAF and scale out instances</span>
+            <i class="bi bi-shield-fill-check dr-btn-icon" aria-hidden="true"></i>
+          </button>
+          <button class="dr-btn" data-decision="C4" aria-label="Monitor for 30 more minutes before taking any action">
+            <span class="dr-btn-key">OPTION D</span>
+            <span class="dr-btn-text">Monitor for 30 more minutes and wait for the situation to self-resolve</span>
+            <i class="bi bi-eye dr-btn-icon" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="consequence-3" class="dr-consequence" role="alert" aria-live="assertive"></div>
+        <div id="next-3" style="text-align:right; margin-top:16px; display:none;">
+          <button id="btn-next-3" class="btn-dr-replay" aria-label="View the incident report">
+            View Incident Report <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /phase-3 -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PHASE 4: INCIDENT REPORT
+    ══════════════════════════════════════════════════════ -->
+    <div id="phase-report" class="dr-phase" role="region" aria-label="Incident Report" aria-live="polite">
+
+      <div class="dr-progress-bar-wrap" aria-hidden="true">
+        <div class="dr-progress-bar-fill" style="width: 100%"></div>
+      </div>
+
+      <div class="dr-report-header">
+        <div id="report-verdict-badge" class="dr-verdict-badge"></div>
+        <div id="report-overall-score" class="dr-overall-score"></div>
+        <p style="font-size:0.8rem; color: rgba(231,242,247,0.4); font-family:'JetBrains Mono',monospace; margin-top:6px;">overall incident response score</p>
+      </div>
+
+      <!-- Score breakdown -->
+      <div class="dr-score-grid" aria-label="Score breakdown">
+        <div class="dr-score-card">
+          <div class="dr-score-card-label">Reliability</div>
+          <div class="dr-score-card-value" id="score-reliability">--</div>
+          <div class="dr-score-bar"><div class="dr-score-bar-fill reliability" id="bar-reliability"></div></div>
+        </div>
+        <div class="dr-score-card">
+          <div class="dr-score-card-label">Security</div>
+          <div class="dr-score-card-value" id="score-security">--</div>
+          <div class="dr-score-bar"><div class="dr-score-bar-fill security" id="bar-security"></div></div>
+        </div>
+        <div class="dr-score-card">
+          <div class="dr-score-card-label">Decision Quality</div>
+          <div class="dr-score-card-value" id="score-quality">--</div>
+          <div class="dr-score-bar"><div class="dr-score-bar-fill quality" id="bar-quality"></div></div>
+        </div>
+      </div>
+
+      <!-- Decision timeline -->
+      <div class="dr-decision-timeline" aria-label="Your decision timeline">
+        <div class="dr-section-label" style="margin-bottom:14px;">Your Decision Timeline</div>
+        <div id="timeline-items"></div>
+      </div>
+
+      <!-- Lessons learned -->
+      <div class="dr-lessons">
+        <h4>Lessons Learned</h4>
+        <ul id="lessons-list"></ul>
+      </div>
+
+      <!-- Referee quote -->
+      <div class="dr-referee-quote">
+        <blockquote id="referee-quote"></blockquote>
+        <cite>Emmanuel Maingi &nbsp;·&nbsp; Certified National Football Referee &amp; Software Engineer</cite>
+      </div>
+
+      <!-- Actions -->
+      <div class="dr-report-actions">
+        <button id="btn-replay" class="btn-dr-replay" aria-label="Replay the Decision Room from the beginning">
+          <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+          Replay
+        </button>
+        <a href="{% url 'portfolio' %}" class="btn-dr-portfolio" aria-label="View Emmanuel's engineering portfolio">
+          <i class="bi bi-briefcase" aria-hidden="true"></i>
+          View Portfolio
+        </a>
+        <a href="{% url 'contact' %}" class="btn-dr-portfolio" aria-label="Contact Emmanuel">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+          Get In Touch
+        </a>
+      </div>
+
+    </div><!-- /phase-report -->
+
+  </div><!-- /container -->
+</div><!-- /decision-room-app -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/decision-room.js' %}"></script>
+{% endblock %}
