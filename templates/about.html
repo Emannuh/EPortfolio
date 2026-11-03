@@ -33,7 +33,16 @@
       </div>
       <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="250">
         <figure class="profile-figure text-center text-lg-end">
-          <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}" alt="Emmanuel Maingi" class="img-fluid profile-photo">
+          <div style="display:flex; gap:14px; justify-content:flex-end; align-items:flex-end; flex-wrap:wrap;">
+            <img src="{% static 'img/profile/emmanuel-maingi.jpg' %}"
+                 alt="Emmanuel Maingi"
+                 class="img-fluid profile-photo"
+                 style="flex:1; min-width:0; max-width:58%; border-radius:16px;">
+            <img src="{% static 'img/profile/emmanuel-maingi-2.jpg' %}"
+                 alt="Emmanuel Maingi"
+                 class="img-fluid"
+                 style="flex:1; min-width:0; max-width:38%; border-radius:16px; object-fit:cover; object-position:top center; align-self:flex-start;">
+          </div>
         </figure>
       </div>
     </div>
