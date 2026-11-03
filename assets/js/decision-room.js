@@ -1,12 +1,12 @@
 /**
  * The Engineer's Decision Room
  * Interactive incident-response simulation
- * Vanilla ES6 — no framework, no build step, no external APIs
+ * Vanilla ES6 · no framework, no build step, no external APIs
  *
  * Architecture:
- *   SCENARIO  — all content: decisions, consequences, scores, lessons, quotes
- *   STATE     — mutable runtime state (current stage + choices made)
- *   Functions — render*, handle*, calculate*, reset*
+ *   SCENARIO  · all content: decisions, consequences, scores, lessons, quotes
+ *   STATE     · mutable runtime state (current stage + choices made)
+ *   Functions · render*, handle*, calculate*, reset*
  */
 
 'use strict';
@@ -23,29 +23,29 @@ const SCENARIO = {
       quality: 'good',
       icon: 'bi-check-circle-fill',
       title: 'Good instinct.',
-      text: 'Diving into the metrics reveals a clear correlation: DB query response time spiked exactly 18 minutes ago — matching the deployment time. CPU is high but memory is stable, which rules out a leak. The latency pattern points squarely at the database layer, not infrastructure or traffic volume.',
+      text: 'Diving into the metrics reveals a clear correlation: DB query response time spiked exactly 18 minutes ago, matching the deployment time. CPU is high but memory is stable, which rules out a leak. The latency pattern points squarely at the database layer, not infrastructure or traffic volume.',
       hint: 'The deployment diff is your next stop.',
     },
     A2: {
       quality: 'good',
       icon: 'bi-check-circle-fill',
       title: 'Methodical approach.',
-      text: 'The changelog shows it: a new JOIN between user_sessions and analytics_events with no index on analytics_events.created_at. At 1,200 requests per second, that\'s a full table scan on every analytics request — a classic N+1-style performance regression. You\'ve found the smoking gun.',
+      text: 'The changelog shows it: a new JOIN between user_sessions and analytics_events with no index on analytics_events.created_at. At 1,200 requests per second, that\'s a full table scan on every analytics request. A classic N+1-style performance regression. You\'ve found the smoking gun.',
       hint: 'Your diagnosis is well-supported. Now check the security indicators.',
     },
     A3: {
       quality: 'bad',
       icon: 'bi-exclamation-triangle-fill',
       title: 'Impulsive.',
-      text: 'Rolling back without a diagnosis is a gamble. You might restore service — but you\'ve also introduced rollback risk and burned 6 minutes. More critically: the suspicious IPs are still probing your perimeter. You\'ve addressed one symptom while leaving a security exposure unresolved. A good engineer diagnoses before acting.',
-      hint: 'Proceed — but be aware your quality score is affected.',
+      text: 'Rolling back without a diagnosis is a gamble. You might restore service, but you\'ve also introduced rollback risk and burned 6 minutes. More critically: the suspicious IPs are still probing your perimeter. You\'ve addressed one symptom while leaving a security exposure unresolved. A good engineer diagnoses before acting.',
+      hint: 'Proceed, but be aware your quality score is affected.',
     },
     A4: {
       quality: 'bad',
       icon: 'bi-exclamation-triangle-fill',
       title: 'You are the on-call engineer.',
-      text: 'Paging the team is sometimes the right call — but not as your *first* move at 02:47 UTC. The on-call rota exists for exactly this scenario: you. The team responds 12 minutes later. Latency has climbed to 1,600ms. Error rate is 24%. You\'ve lost time that could have been spent investigating. Leadership is taking responsibility for the situation in front of you.',
-      hint: 'Proceed — but the delay has affected your reliability score.',
+      text: 'Paging the team is sometimes the right call, but not as your first move at 02:47 UTC. The on-call rota exists for exactly this scenario: you. The team responds 12 minutes later. Latency has climbed to 1,600ms. Error rate is 24%. You\'ve lost time that could have been spent investigating. Leadership is taking responsibility for the situation in front of you.',
+      hint: 'Proceed, but the delay has affected your reliability score.',
     },
   },
 
@@ -55,29 +55,29 @@ const SCENARIO = {
       quality: 'good',
       icon: 'bi-check-circle-fill',
       title: 'Correct root cause identified.',
-      text: 'The unindexed JOIN is the culprit. analytics_events has 14 million rows. Without an index on created_at, every dashboard request triggers a full table scan that holds DB connections and starves other queries. The background worker change (30s → 5s) is amplifying the load — six times more frequent queries hitting the same slow path. You have a precise diagnosis.',
+      text: 'The unindexed JOIN is the culprit. analytics_events has 14 million rows. Without an index on created_at, every dashboard request triggers a full table scan that holds DB connections and starves other queries. The background worker change (30s to 5s) is amplifying the load: six times more frequent queries hitting the same slow path. You have a precise diagnosis.',
       hint: 'You know what\'s broken. Now fix it decisively.',
     },
     B2: {
       quality: 'ok',
       icon: 'bi-dash-circle-fill',
-      title: 'Partially correct — but incomplete.',
-      text: 'The 3 flagged IPs are real and should be addressed. However, their combined 1,315 requests over 15 minutes is not sufficient to cause a 643% latency spike. The DB query logs tell a different story: timeouts of 8,000ms on queries that should take 50ms. Attributing the outage entirely to the IPs misses the actual root cause. Blocking the IPs is good security hygiene — but it won\'t restore your SLA.',
+      title: 'Partially correct, but incomplete.',
+      text: 'The 3 flagged IPs are real and should be addressed. However, their combined 1,315 requests over 15 minutes is not sufficient to cause a 643% latency spike. The DB query logs tell a different story: timeouts of 8,000ms on queries that should take 50ms. Attributing the outage entirely to the IPs misses the actual root cause. Blocking the IPs is good security hygiene, but it won\'t restore your SLA.',
       hint: 'Security is important, but the database is the bottleneck.',
     },
     B3: {
       quality: 'bad',
       icon: 'bi-x-circle-fill',
       title: 'Incorrect diagnosis.',
-      text: 'Memory is at 61% and stable — no growth trend, no OOM events in the logs. A memory leak would show progressive memory growth over time, often accompanied by garbage collection pauses. That\'s not what the data shows. Focusing on memory will send you down the wrong path and cost time. The evidence points clearly to the database layer.',
-      hint: 'Check the DB query timeouts in the logs — the answer is there.',
+      text: 'Memory is at 61% and stable. No growth trend, no OOM events in the logs. A memory leak would show progressive memory growth over time, often accompanied by garbage collection pauses. That\'s not what the data shows. Focusing on memory will send you down the wrong path and cost time. The evidence points clearly to the database layer.',
+      hint: 'Check the DB query timeouts in the logs. The answer is there.',
     },
     B4: {
       quality: 'bad',
       icon: 'bi-x-circle-fill',
       title: 'Incorrect diagnosis.',
-      text: 'The load balancer configuration is unchanged in the deployment diff. All 4 pods are healthy and receiving traffic proportionally. A misconfigured load balancer would typically show uneven traffic distribution or pod health failures — neither of which is present. This is a red herring. The 8-second DB query timeouts are the signal, not the load balancer.',
-      hint: 'Re-read the deployment diff — one change stands out.',
+      text: 'The load balancer configuration is unchanged in the deployment diff. All 4 pods are healthy and receiving traffic proportionally. A misconfigured load balancer would typically show uneven traffic distribution or pod health failures. Neither of which is present. This is a red herring. The 8-second DB query timeouts are the signal, not the load balancer.',
+      hint: 'Re-read the deployment diff. One change stands out.',
     },
   },
 
@@ -92,20 +92,20 @@ const SCENARIO = {
     C2: {
       quality: 'ok',
       icon: 'bi-dash-circle-fill',
-      title: 'Palliative — root cause unresolved.',
+      title: 'Palliative. Root cause unresolved.',
       text: 'Scaling to 8 pods buys time: latency drops to 420ms and error rate falls to 4%. But the unindexed JOIN is still in production on every pod. As traffic increases through the morning, the problem will return. You\'ve treated the symptom, not the disease. The security exposure from the 3 flagged IPs is also unaddressed. Service is partially restored, but technical debt remains.',
     },
     C3: {
       quality: 'ok',
       icon: 'bi-dash-circle-fill',
-      title: 'Security addressed — application still broken.',
-      text: 'Blocking the 3 IPs is correct and reduces suspicious traffic. Scaling provides temporary relief. However, the unindexed DB JOIN is still running in production. Latency improves slightly to 650ms but remains above acceptable thresholds. The real fix — the database index — hasn\'t been applied. You\'ve responded to the secondary issue while leaving the primary one in place.',
+      title: 'Security addressed. Application still broken.',
+      text: 'Blocking the 3 IPs is correct and reduces suspicious traffic. Scaling provides temporary relief. However, the unindexed DB JOIN is still running in production. Latency improves slightly to 650ms but remains above acceptable thresholds. The real fix, the database index, hasn\'t been applied. You\'ve responded to the secondary issue while leaving the primary one in place.',
     },
     C4: {
       quality: 'bad',
       icon: 'bi-x-circle-fill',
       title: 'SLA breached.',
-      text: 'Thirty minutes of monitoring with no action: latency climbs to 2,800ms. Error rate hits 47%. The connection pool exhausts completely at 02:58 UTC. The application goes fully dark at 03:02. SLA is breached. Three enterprise customers open incident tickets. The on-call manager is paged. In engineering, inaction under a known incident is not neutral — it is a decision with consequences.',
+      text: 'Thirty minutes of monitoring with no action: latency climbs to 2,800ms. Error rate hits 47%. The connection pool exhausts completely at 02:58 UTC. The application goes fully dark at 03:02. SLA is breached. Three enterprise customers open incident tickets. The on-call manager is paged. In engineering, inaction under a known incident is not neutral. It is a decision with consequences.',
     },
   },
 
@@ -201,19 +201,19 @@ const SCENARIO = {
       min: 70,
       label: 'Reliable Engineer',
       cssClass: 'dr-verdict-reliable',
-      description: 'Solid incident response. You restored service and showed methodical thinking. There were areas where a more thorough approach would have improved the outcome — particularly around root cause identification or security.',
+      description: 'Solid incident response. You restored service and showed methodical thinking. There were areas where a more thorough approach would have improved the outcome, particularly around root cause identification or security.',
     },
     {
       min: 50,
       label: 'Learning Curve',
       cssClass: 'dr-verdict-learning',
-      description: 'Partial success. Service was partially restored, but the root cause was either missed or addressed incompletely. Review the lessons below — these patterns come up in real incidents regularly.',
+      description: 'Partial success. Service was partially restored, but the root cause was either missed or addressed incompletely. Review the lessons below. These patterns come up in real incidents regularly.',
     },
     {
       min: 0,
       label: 'Postmortem Required',
       cssClass: 'dr-verdict-postmortem',
-      description: 'The incident escalated. The SLA was breached and the root cause was never addressed. Real incidents with these outcomes result in postmortem reviews and process improvements — which is how engineers grow.',
+      description: 'The incident escalated. The SLA was breached and the root cause was never addressed. Real incidents with these outcomes result in postmortem reviews and process improvements. That is how engineers grow.',
     },
   ],
 
@@ -252,19 +252,19 @@ const SCENARIO = {
     diagnose_first: 'Always diagnose before acting. Rolling back without understanding the root cause risks reintroducing the same bug on the next deploy.',
     read_the_diff: 'The deployment diff is your first evidence source. Changes that correlate with an incident\'s timing are strong suspects.',
     db_indexes: 'Unindexed JOIN queries on large tables are one of the most common causes of sudden production latency spikes after deployments.',
-    security_separate: 'Security threats and application performance issues can coexist. Address both — but prioritise the root cause of the user-facing degradation first.',
-    sla_clock: 'SLA obligations are real. Inaction under a known incident is itself a decision — and it carries consequences.',
+    security_separate: 'Security threats and application performance issues can coexist. Address both, but prioritise the root cause of the user-facing degradation first.',
+    sla_clock: 'SLA obligations are real. Inaction under a known incident is itself a decision, and it carries consequences.',
     team_ownership: 'On-call engineering means taking ownership of the situation in front of you, not delegating it as a first response.',
-    partial_fix: 'Scaling infrastructure can mask a performance problem temporarily. It is not a fix — it is time bought.',
+    partial_fix: 'Scaling infrastructure can mask a performance problem temporarily. It is not a fix. It is time bought.',
     security_hygiene: 'Blocking suspicious IPs and flagging them for security review is good hygiene, even when they are not the primary incident cause.',
-    root_cause: 'The root cause is always in the data. Logs, metrics, and diffs tell the story — if you read them carefully enough.',
+    root_cause: 'The root cause is always in the data. Logs, metrics, and diffs tell the story if you read them carefully enough.',
   },
 
   /* ── Referee quotes — selected based on overall score ── */
   refereeQuotes: {
-    high: `"In football, the best referees are invisible — not because they do nothing, but because they act at the right moment, with the right information. A booking at the wrong time changes the match. A decision deferred creates a worse decision later.\n\nEngineering incidents work exactly the same way. Composure isn\'t passivity. It\'s the discipline to gather evidence before you act, to hold your nerve under noise, and to own the call you make — even when 60,000 people are watching.\n\nEvery production incident is a test of that discipline."`,
-    mid: `"A referee who second-guesses every call loses the match. A referee who never questions themselves makes the wrong calls. The best ones know the difference between decisive and reckless.\n\nIn this incident, you made progress — but there were moments where a more thorough read of the evidence would have led to a better outcome. That\'s not failure: that\'s the feedback loop that makes engineers better.\n\nReview the decision timeline. Ask yourself: what did I see, and what did I miss?"`,
-    low: `"Every referee, every engineer, gets the call wrong sometimes. The ones who improve are the ones who don\'t look away from the postmortem.\n\nThis incident escalated further than it needed to. Not because the problem was unsolvable — the evidence was there in the logs — but because of how the decisions were sequenced.\n\nReview the lessons below. Replay the scenario. The goal isn\'t a perfect score — it\'s understanding why each decision has the outcome it does."`,
+    high: `"In football, the best referees are invisible. Not because they do nothing, but because they act at the right moment, with the right information. A booking at the wrong time changes the match. A decision deferred creates a worse decision later.\n\nEngineering incidents work exactly the same way. Composure is not passivity. It is the discipline to gather evidence before you act, to hold your nerve under noise, and to own the call you make.\n\nEvery production incident is a test of that discipline."`,
+    mid: `"A referee who second-guesses every call loses the match. A referee who never questions themselves makes the wrong calls. The best ones know the difference between decisive and reckless.\n\nIn this incident, you made progress. But there were moments where a more thorough read of the evidence would have led to a better outcome. That is not failure: it is the feedback loop that makes engineers better.\n\nReview the decision timeline. Ask yourself: what did I see, and what did I miss?"`,
+    low: `"Every referee, every engineer, gets the call wrong sometimes. The ones who improve are the ones who do not look away from the postmortem.\n\nThis incident escalated further than it needed to. Not because the problem was unsolvable. The evidence was there in the logs. It came down to how the decisions were sequenced.\n\nReview the lessons below. Replay the scenario. The goal is not a perfect score. It is understanding why each decision has the outcome it does."`,
   },
 };
 
@@ -383,7 +383,7 @@ function calculateScores() {
 
   if (!scores) {
     // Fallback for any unmapped combination (should not occur)
-    console.warn('Decision Room: unmapped path', key, '— using fallback scores');
+    console.warn('Decision Room: unmapped path', key, '· using fallback scores');
     return { reliability: 50, security: 50, quality: 50 };
   }
 

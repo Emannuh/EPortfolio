@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - pip install -r requirements.txt
+        - python manage.py collectstatic --noinput
+    build:
+      commands:
+        - python manage.py distill-local dist/ --force
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - ~/.cache/pip

@@ -126,8 +126,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'assets']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise compressed static file storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise static file storage (compressed, no filename hashing)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
