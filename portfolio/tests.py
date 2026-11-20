@@ -95,6 +95,16 @@ class DecisionRoomTemplateTests(TestCase):
         self.assertIn('decision-room.js', content)
         self.assertIn('decision-room.css', content)
 
+        # Phase 4.6: severity bar and incident timer
+        self.assertIn('dr-severity-bar', content)
+        self.assertIn('incident-timer-val', content)
+
+        # Phase 4.6: verdict description element
+        self.assertIn('report-verdict-desc', content)
+
+        # Phase 4.6: next-button wrappers use dr-next-wrap class
+        self.assertIn('class="dr-next-wrap"', content)
+
     def test_decision_room_has_no_django_template_errors(self):
         """If template rendering fails, Django returns 500."""
         response = self.client.get(reverse('decision-room'))
@@ -271,3 +281,59 @@ class ContactFormTests(TestCase):
         })
         # Django contact view redirects after successful POST
         self.assertIn(response.status_code, [200, 302])
+
+
+class Phase46RegressionTests(TestCase):
+    """Phase 4.6 — regression tests for accuracy corrections and new features."""
+
+    def setUp(self):
+        self.client = Client()
+
+    def _load_js(self):
+        import os
+        js_path = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            'assets', 'js', 'decision-room.js'
+        )
+        with open(js_path, 'r', encoding='utf-8') as f:
+            return f.read()
+
+    def test_memory_language_is_nuanced(self):
+        """Stage 1 A1 must use nuanced memory language, not 'rules out a leak'."""
+        js = self._load_js()
+        self.assertNotIn('rules out a leak', js)
+        self.assertNotIn('rules out a memory leak', js)
+        self.assertIn('makes a significant', js)
+
+    def test_b2_acknowledges_ips_as_real(self):
+        """B2 feedback must treat IPs as real concern, not auto-dismiss."""
+        js = self._load_js()
+        self.assertIn('warrant investigation', js)
+
+    def test_b1_label_references_specific_index(self):
+        """B1 decision label and text must reference the specific missing index."""
+        js = self._load_js()
+        self.assertIn('analytics_events.created_at', js)
+
+    def test_severity_bar_in_template(self):
+        response = self.client.get(reverse('decision-room'))
+        content = response.content.decode('utf-8')
+        self.assertIn('dr-severity-bar', content)
+        self.assertIn('P1', content)
+
+    def test_incident_timer_in_template(self):
+        response = self.client.get(reverse('decision-room'))
+        content = response.content.decode('utf-8')
+        self.assertIn('incident-timer-val', content)
+
+    def test_verdict_desc_element_present(self):
+        response = self.client.get(reverse('decision-room'))
+        content = response.content.decode('utf-8')
+        self.assertIn('report-verdict-desc', content)
+
+    def test_next_wrap_class_replaces_inline_display_none(self):
+        response = self.client.get(reverse('decision-room'))
+        content = response.content.decode('utf-8')
+        self.assertIn('class="dr-next-wrap"', content)
+        # Old inline style should be gone
+        self.assertNotIn('display:none', content)

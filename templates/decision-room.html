@@ -76,9 +76,22 @@
         <div class="dr-progress-bar-fill" style="width: 25%"></div>
       </div>
 
+      <!-- Severity bar with incident timer -->
+      <div class="dr-severity-bar" role="status" aria-label="Incident severity">
+        <span class="dr-severity-label">Severity</span>
+        <span class="dr-severity-value dr-severity-p1">P1 &nbsp;·&nbsp; CRITICAL</span>
+        <span class="dr-severity-sep">|</span>
+        <span class="dr-severity-label">Service</span>
+        <span class="dr-severity-value" style="color:rgba(231,242,247,0.75);">nightwatch-api</span>
+        <span class="dr-severity-sep">|</span>
+        <span class="dr-severity-label">SLA window</span>
+        <span class="dr-severity-value dr-severity-p2">22 min remaining</span>
+        <span class="dr-incident-timer" aria-live="off">Incident elapsed: <span class="timer-val" id="incident-timer-val">04:13</span></span>
+      </div>
+
       <div class="dr-section-label">Stage 1 of 3</div>
       <h2 class="dr-title">Assess the Situation</h2>
-      <p class="dr-subtitle">Alerts have been firing for 4 minutes. The ops channel is escalating. Before you act, you need to understand what you're dealing with. What is your first move?</p>
+      <p class="dr-subtitle">Alerts have been firing for 4 minutes. The ops channel is escalating. You have full access to metrics, logs, the deployment history, and security dashboards. What is your first move?</p>
 
       <!-- Live metrics dashboard -->
       <div class="dr-dashboard" aria-label="Live system metrics">
@@ -145,7 +158,7 @@
           </button>
         </div>
         <div id="consequence-1" class="dr-consequence" role="alert" aria-live="assertive"></div>
-        <div id="next-1" style="text-align:right; margin-top:16px; display:none;">
+        <div id="next-1" class="dr-next-wrap">
           <button id="btn-next-1" class="btn-dr-replay" aria-label="Proceed to stage 2">
             Proceed to Investigation <i class="bi bi-arrow-right" aria-hidden="true"></i>
           </button>
@@ -244,7 +257,7 @@
           </button>
         </div>
         <div id="consequence-2" class="dr-consequence" role="alert" aria-live="assertive"></div>
-        <div id="next-2" style="text-align:right; margin-top:16px; display:none;">
+        <div id="next-2" class="dr-next-wrap">
           <button id="btn-next-2" class="btn-dr-replay" aria-label="Proceed to stage 3">
             Proceed to Response <i class="bi bi-arrow-right" aria-hidden="true"></i>
           </button>
@@ -332,7 +345,7 @@
           </button>
         </div>
         <div id="consequence-3" class="dr-consequence" role="alert" aria-live="assertive"></div>
-        <div id="next-3" style="text-align:right; margin-top:16px; display:none;">
+        <div id="next-3" class="dr-next-wrap">
           <button id="btn-next-3" class="btn-dr-replay" aria-label="View the incident report">
             View Incident Report <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
           </button>
@@ -355,6 +368,7 @@
         <div id="report-verdict-badge" class="dr-verdict-badge"></div>
         <div id="report-overall-score" class="dr-overall-score"></div>
         <p style="font-size:0.8rem; color: rgba(231,242,247,0.4); font-family:'JetBrains Mono',monospace; margin-top:6px;">overall incident response score</p>
+        <p id="report-verdict-desc" style="font-size:0.88rem; color:rgba(231,242,247,0.75); font-family:'Roboto',sans-serif; max-width:600px; margin:12px auto 0; line-height:1.6;"></p>
       </div>
 
       <!-- Score breakdown -->

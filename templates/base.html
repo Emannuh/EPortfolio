@@ -7,6 +7,13 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>{% block title %}Emmanuel Maingi | Software & DevOps Engineer{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}Emmanuel Maingi. Full Stack Software and DevOps Engineer based in Nairobi, Kenya. 4+ years across cloud, security, and enterprise software.{% endblock %}">
+  <meta name="theme-color" content="#0a0e13">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}Emmanuel Maingi | Software & DevOps Engineer{% endblock %}">
+  <meta property="og:description" content="Full Stack Software and DevOps Engineer based in Nairobi, Kenya. Cloud, security and enterprise software.">
+  <meta property="og:image" content="{% static 'img/profile/emmanuel-maingi.jpg' %}">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="keywords" content="Emmanuel Maingi, Software Engineer, DevOps Engineer, Cloud Engineer, Data Analyst, Azure, AWS, Linux, Python, Django, Nairobi Kenya">
 
   <!-- Favicons -->
@@ -16,7 +23,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,6 +36,9 @@
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
   <!-- Decision Room nav badge styles (needed on all pages) -->
   <link href="{% static 'css/decision-room.css' %}" rel="stylesheet">
+
+  <!-- Modern design layer (remove this line to revert to the original theme) -->
+  <link href="{% static 'css/modern.css' %}" rel="stylesheet">
 
   {% block extra_css %}{% endblock %}
 </head>
@@ -59,8 +69,8 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="https://github.com/Emannuh" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/emmanuel-maingi-546b0a175/" target="_blank" class="linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Emannuh" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/emmanuel-maingi-546b0a175/" target="_blank" rel="noopener" class="linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
@@ -76,8 +86,8 @@
         <p>© <span>Copyright</span> <strong class="px-1 sitename">Emmanuel Maingi</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
-        <a href="https://github.com/Emannuh" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/emmanuel-maingi-546b0a175/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Emannuh" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/emmanuel-maingi-546b0a175/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         <a href="mailto:Emhmanuh@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
       </div>
       <div class="credits">
@@ -88,9 +98,6 @@
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
 
   <!-- Vendor JS -->
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

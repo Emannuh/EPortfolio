@@ -99,7 +99,13 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  // Init as soon as the DOM is ready so content is never hidden while images/fonts load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', aosInit);
+  } else {
+    aosInit();
+  }
+  window.addEventListener('load', () => AOS.refresh());
 
   /**
    * Init typed.js
