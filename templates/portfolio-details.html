@@ -18,17 +18,28 @@
       <div class="col-lg-6" data-aos="fade-right">
         <div class="portfolio-details-media">
           <div class="main-image">
-            <div class="portfolio-details-slider swiper init-swiper">
-              <script type="application/json" class="swiper-config">
-                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
-              </script>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-1.webp' %}" alt="Project" class="img-fluid"></div>
-                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-3.webp' %}" alt="Project" class="img-fluid"></div>
-                <div class="swiper-slide"><img src="{% static 'img/portfolio/portfolio-5.webp' %}" alt="Project" class="img-fluid"></div>
+            <!-- Project preview panel (replaces template stock photos) -->
+            <div class="code-window" role="img" aria-label="Project summary for the Soccer League Management System: Django and MySQL, 500+ player records, role-based access, real-time standings">
+              <div class="code-window-bar">
+                <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+                <span class="code-window-title">project-summary.py</span>
               </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
+<pre class="code-window-body" aria-hidden="true"><code><span class="c"># Soccer League Management System</span>
+<span class="c"># Django + MySQL · Emobilis capstone</span>
+
+<span class="k">class</span> <span class="f">League</span>:
+    players   = <span class="n">500</span>+        <span class="c"># records managed</span>
+    roles     = [<span class="s">"admin"</span>, <span class="s">"manager"</span>, <span class="s">"viewer"</span>]
+    features  = [
+        <span class="s">"player registration"</span>,
+        <span class="s">"team management"</span>,
+        <span class="s">"match fixtures"</span>,
+        <span class="s">"live standings"</span>,
+    ]
+    frontend  = <span class="s">"Bootstrap 5"</span>   <span class="c"># 95% cross-browser</span>
+
+<span class="p">$</span> python manage.py runserver
+<span class="ok">Starting development server at http://127.0.0.1:8000/</span></code></pre>
             </div>
           </div>
           <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
@@ -50,7 +61,7 @@
           <h2 class="project-title">Soccer League Management System</h2>
           <div class="project-website">
             <i class="bi bi-github"></i>
-            <a href="https://github.com/Emannuh" target="_blank">github.com/Emannuh</a>
+            <a href="https://github.com/Emannuh" target="_blank" rel="noopener">github.com/Emannuh</a>
           </div>
 
           <div class="project-overview">

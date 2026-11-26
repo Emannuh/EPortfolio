@@ -72,16 +72,18 @@
     font-weight: 600;
     letter-spacing: 0.3px;
   }
-  .tag-python  { background: #fff3cd; color: #856404; }
-  .tag-django  { background: #d1e7dd; color: #0a3622; }
-  .tag-azure   { background: #cfe2ff; color: #084298; }
-  .tag-aws     { background: #fff3cd; color: #664d03; }
-  .tag-k8s     { background: #e0cffc; color: #3d0a91; }
-  .tag-docker  { background: #cff4fc; color: #055160; }
-  .tag-devops  { background: #f8d7da; color: #842029; }
-  .tag-security{ background: #d1ecf1; color: #0c5460; }
-  .tag-cloud   { background: #d4edda; color: #155724; }
-  .tag-api     { background: #fde8d8; color: #7d3a0d; }
+  /* Dark-theme tags: tinted fill, bright text, hairline border */
+  .card-tags span { --tag: 148,163,184; background: rgba(var(--tag),0.12); color: rgb(var(--tag)); border: 1px solid rgba(var(--tag),0.28); }
+  .tag-python  { --tag: 250,204,21 !important; }
+  .tag-django  { --tag: 52,211,153 !important; }
+  .tag-azure   { --tag: 96,165,250 !important; }
+  .tag-aws     { --tag: 251,146,60 !important; }
+  .tag-k8s     { --tag: 167,139,250 !important; }
+  .tag-docker  { --tag: 56,189,248 !important; }
+  .tag-devops  { --tag: 244,114,182 !important; }
+  .tag-security{ --tag: 45,212,191 !important; }
+  .tag-cloud   { --tag: 129,140,248 !important; }
+  .tag-api     { --tag: 251,113,133 !important; }
 
   .card-footer-link {
     display: flex;
@@ -89,12 +91,12 @@
     gap: 6px;
     font-size: 0.83rem;
     font-weight: 600;
-    color: #0d6efd;
+    color: var(--accent-color);
     text-decoration: none;
     margin-top: auto;
     padding-top: 4px;
   }
-  .card-footer-link:hover { color: #0a58ca; }
+  .card-footer-link:hover { color: var(--heading-color); }
 
   .lang-bar {
     background: rgba(255,255,255,0.05);
@@ -162,7 +164,7 @@
               <span class="tag-django">Django</span>
               <span class="tag-cloud">Full Stack</span>
             </div>
-            <a href="https://github.com/Emannuh/FKFSYS" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/FKFSYS" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -180,7 +182,7 @@
               <span class="tag-django">Django</span>
               <span class="tag-cloud">Full Stack</span>
             </div>
-            <a href="https://github.com/Emannuh/SafeSpace" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/SafeSpace" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -198,7 +200,7 @@
               <span class="tag-security">Security</span>
               <span class="tag-devops">Automation</span>
             </div>
-            <a href="https://github.com/Emannuh/SecureScan" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/SecureScan" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -216,7 +218,7 @@
               <span class="tag-security">Networking</span>
               <span class="tag-devops">Automation</span>
             </div>
-            <a href="https://github.com/Emannuh/EMNet" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/EMNet" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -234,7 +236,7 @@
               <span class="tag-django">Django</span>
               <span class="tag-cloud">Full Stack</span>
             </div>
-            <a href="https://github.com/Emannuh/VETA" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/VETA" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -252,7 +254,7 @@
               <span class="tag-aws">AWS</span>
               <span class="tag-k8s">Kubernetes</span>
             </div>
-            <a href="https://github.com/Emannuh/ci-cd-pipeline-" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/ci-cd-pipeline-" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -268,7 +270,7 @@
             <div class="card-tags">
               <span class="tag-cloud">Front End</span>
             </div>
-            <a href="https://github.com/Emannuh/KYISA" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/KYISA" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -286,7 +288,7 @@
               <span class="tag-aws">AWS</span>
               <span class="tag-api">API</span>
             </div>
-            <a href="https://github.com/Emannuh/teleafya" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh/teleafya" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -304,7 +306,7 @@
               <span class="tag-security">Security</span>
               <span class="tag-security">SIEM</span>
             </div>
-            <a href="https://github.com/Emannuh" target="_blank" class="card-footer-link">
+            <a href="https://github.com/Emannuh" target="_blank" rel="noopener" class="card-footer-link">
               <i class="bi bi-github"></i> View on GitHub
             </a>
           </div>
@@ -319,8 +321,8 @@
         <span class="lang-dot" style="background:#3572A5; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:6px;"></span>
         <strong style="color:rgba(255,255,255,0.85);">Python</strong> is the primary language across my repositories
       </p>
-      <a href="https://github.com/Emannuh" target="_blank" class="btn btn-primary btn-lg">
-        <i class="bi bi-github me-2"></i>View All Projects on GitHub
+      <a href="https://github.com/Emannuh" target="_blank" rel="noopener" class="btn-gradient">
+        <i class="bi bi-github"></i>View All Projects on GitHub <i class="bi bi-arrow-up-right"></i>
       </a>
     </div>
 

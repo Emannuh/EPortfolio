@@ -182,6 +182,11 @@
       });
     });
 
+    // Card heights change once web fonts swap in; re-measure so cards don't overlap
+    const relayout = () => { if (initIsotope) initIsotope.layout(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+    window.addEventListener('load', relayout);
+
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
       filters.addEventListener('click', function() {
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');

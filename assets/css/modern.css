@@ -591,3 +591,245 @@ a { transition: color 0.2s var(--ease); }
 
   [data-aos] { opacity: 1 !important; transform: none !important; }
 }
+
+/*--------------------------------------------------------------
+# Gradient CTA (standalone links)
+--------------------------------------------------------------*/
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  background: var(--gradient);
+  color: var(--on-accent);
+  box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.6);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.btn-gradient:hover {
+  color: var(--on-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(56, 189, 248, 0.75);
+}
+
+/*--------------------------------------------------------------
+# Portfolio filters
+--------------------------------------------------------------*/
+.portfolio .portfolio-filters li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--nav-color);
+  font-size: 14px;
+}
+
+.portfolio .portfolio-filters li:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--heading-color);
+}
+
+.portfolio .portfolio-filters li.filter-active {
+  background: var(--gradient);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+/*--------------------------------------------------------------
+# About: stat tiles
+--------------------------------------------------------------*/
+.stat-tile {
+  height: 100%;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)), var(--surface-color);
+}
+
+.stat-tile i {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+.stat-tile h2 {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin: 0 0 4px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-tile p { margin: 0; color: var(--muted); }
+
+/*--------------------------------------------------------------
+# Portfolio details: code window + accordion
+--------------------------------------------------------------*/
+.code-window {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: #0c1117;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(56, 189, 248, 0.06);
+}
+
+.code-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.code-window-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+.code-window-bar .dot.r { background: #f87171; }
+.code-window-bar .dot.a { background: #fbbf24; }
+.code-window-bar .dot.g { background: #34d399; }
+
+.code-window-title {
+  margin-left: 8px;
+  font-family: var(--mono-font);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.code-window-body {
+  margin: 0;
+  padding: 22px 24px;
+  font-family: var(--mono-font);
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #d6deeb;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.code-window-body .c { color: #637777; }
+.code-window-body .k { color: #c792ea; }
+.code-window-body .f { color: #82aaff; }
+.code-window-body .s { color: #addb67; }
+.code-window-body .n { color: #f78c6c; }
+.code-window-body .p { color: var(--accent-color); }
+.code-window-body .ok { color: #34d399; }
+
+.portfolio-details .tech-stack-badges span {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-strong);
+  color: var(--default-color) !important;
+  font-family: var(--mono-font);
+  font-weight: 500;
+}
+
+.portfolio-details .project-accordion .accordion-item {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+  background: var(--surface-color);
+}
+
+.portfolio-details .project-accordion .accordion-button {
+  background: var(--surface-color) !important;
+  color: var(--heading-color) !important;
+  box-shadow: none !important;
+}
+
+.portfolio-details .project-accordion .accordion-button:not(.collapsed) { color: var(--accent-color) !important; }
+
+/* Bootstrap's chevron is a dark SVG; flip it for the dark theme */
+.portfolio-details .project-accordion .accordion-button::after { filter: invert(1) brightness(1.4); opacity: 0.7; }
+
+.portfolio-details .project-accordion .accordion-body {
+  color: var(--default-color) !important;
+  border-top: 1px solid var(--border);
+}
+
+/*--------------------------------------------------------------
+# Service details: defense stack + form
+--------------------------------------------------------------*/
+.defense-stack {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(600px 200px at 0% 0%, rgba(56, 189, 248, 0.08), transparent 70%),
+    var(--surface-color);
+}
+
+.defense-stack li {
+  display: grid;
+  grid-template-columns: 40px 150px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+/* Each layer steps in slightly: the "depth" in defense-in-depth */
+.defense-stack li:nth-child(2) { margin-inline: 8px; }
+.defense-stack li:nth-child(3) { margin-inline: 16px; }
+.defense-stack li:nth-child(4) { margin-inline: 24px; }
+.defense-stack li:nth-child(5) { margin-inline: 32px; border-color: rgba(56, 189, 248, 0.35); }
+
+.defense-stack li:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateX(4px); }
+
+.defense-stack i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+.defense-stack strong { font-family: var(--heading-font); color: var(--heading-color); font-weight: 600; }
+.defense-stack span { color: var(--muted); font-size: 14px; }
+
+@media (max-width: 576px) {
+  .defense-stack li { grid-template-columns: 40px 1fr; margin-inline: 0 !important; }
+  .defense-stack span { grid-column: 2; }
+}
+
+.service-details .consultation-form {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+}
+
+.service-details .consultation-form .form-input {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--heading-color) !important;
+}
+
+.service-details .consultation-form .form-input:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15) !important;
+}
+
+.service-details .consultation-form .btn-consultation {
+  background: var(--gradient);
+  color: var(--on-accent);
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.6);
+}
