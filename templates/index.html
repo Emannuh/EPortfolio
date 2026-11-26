@@ -76,16 +76,14 @@
       <div class="col-lg-6 order-2 order-lg-1">
         <div class="hero-content">
           <span class="status-pill" data-aos="fade-up" data-aos-delay="150"><span class="pulse" aria-hidden="true"></span>Nairobi, Kenya &middot; Open to opportunities</span>
-          <h1 data-aos="fade-up" data-aos-delay="200">Hello, I'm <span class="highlight">Emmanuel Maingi</span></h1>
-          <h2 data-aos="fade-up" data-aos-delay="300">
-            <span class="typed" data-typed-items="Software Engineer, DevOps Engineer, Cloud Engineer, Data Analyst, Linux & Azure Specialist"></span>
-          </h2>
-          <p data-aos="fade-up" data-aos-delay="400">
-            Full Stack Software and DevOps Engineer with 4+ years building, securing and operating cloud-native applications across institutional, government and global enterprise environments. Based in Nairobi, Kenya.
+          <p class="hero-name" data-aos="fade-up" data-aos-delay="200">Emmanuel Maingi <span>Software &middot; Cloud &middot; DevOps Engineer</span></p>
+          <h1 data-aos="fade-up" data-aos-delay="250">I build secure, reliable <span class="serif">cloud systems</span> teams can depend on.</h1>
+          <p data-aos="fade-up" data-aos-delay="350">
+            4+ years building, securing and operating cloud-native applications across institutional, government and global enterprise environments, from Azure security architecture to CI/CD on Kubernetes.
           </p>
           <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
-            <a href="{% url 'portfolio' %}" class="btn btn-primary">View My Work</a>
-            <a href="{% url 'contact' %}" class="btn btn-outline">Get In Touch</a>
+            <a href="{% url 'portfolio' %}" class="btn btn-primary">View selected work <i class="bi bi-arrow-right"></i></a>
+            <a href="{% url 'resume' %}" class="btn btn-outline">Resume</a>
           </div>
           <div class="social-links" data-aos="fade-up" data-aos-delay="600">
             <a href="https://github.com/Emannuh" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -158,6 +156,61 @@
   </div>
 </section>
 
+<!-- Impact -->
+<section class="impact-strip" aria-label="Impact at a glance">
+  <div class="container">
+    <dl class="impact-grid">
+      <div data-aos="fade-up" data-aos-delay="100"><dt>4+ yrs</dt><dd>Enterprise, government &amp; institutional IT</dd></div>
+      <div data-aos="fade-up" data-aos-delay="150"><dt>10,000+</dt><dd>Users supported on national ICT systems</dd></div>
+      <div data-aos="fade-up" data-aos-delay="200"><dt>70%</dt><dd>Faster delivery via CI/CD on AWS EKS</dd></div>
+      <div data-aos="fade-up" data-aos-delay="250"><dt>80%</dt><dd>Attack-surface reduction on Azure</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- Selected work -->
+<section class="home-block section" aria-labelledby="work-heading">
+  <div class="container">
+    <header class="block-head" data-aos="fade-up">
+      <span class="eyebrow">Selected work</span>
+      <h2 id="work-heading">Systems I&rsquo;ve <span class="serif">designed &amp; shipped</span></h2>
+      <a href="{% url 'portfolio' %}" class="link-arrow">All projects <i class="bi bi-arrow-right"></i></a>
+    </header>
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <article class="work-card">
+          <span class="work-index">01</span>
+          <span class="work-kind">Full stack &middot; Django</span>
+          <h3>FKFSYS: FKF Meru Football League System</h3>
+          <p>Runs league operations end to end: M-Pesa team registration, digital referee reports and real-time standings across three zones.</p>
+          <ul class="chip-list"><li>Python</li><li>Django</li><li>MySQL</li><li>M-Pesa API</li></ul>
+          <a href="https://github.com/Emannuh/FKFSYS" target="_blank" rel="noopener" class="work-link">View repository <i class="bi bi-arrow-up-right"></i></a>
+        </article>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <article class="work-card">
+          <span class="work-index">02</span>
+          <span class="work-kind">DevOps &middot; AWS</span>
+          <h3>CI/CD Pipeline on AWS EKS</h3>
+          <p>Containerised workloads on Elastic Kubernetes Service with automated testing and rolling deployments, accelerating delivery by 70%.</p>
+          <ul class="chip-list"><li>GitHub Actions</li><li>CodePipeline</li><li>EKS</li><li>Docker</li></ul>
+          <a href="https://github.com/Emannuh/ci-cd-pipeline-" target="_blank" rel="noopener" class="work-link">View repository <i class="bi bi-arrow-up-right"></i></a>
+        </article>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <article class="work-card">
+          <span class="work-index">03</span>
+          <span class="work-kind">Cloud &middot; API</span>
+          <h3>Tele Afya: Healthcare API</h3>
+          <p>Healthcare API deployed across AWS and Huawei Cloud, optimised for 10,000+ concurrent users with 99.9% uptime.</p>
+          <ul class="chip-list"><li>Node.js</li><li>Express</li><li>MongoDB</li><li>AWS</li></ul>
+          <a href="https://github.com/Emannuh/teleafya" target="_blank" rel="noopener" class="work-link">View repository <i class="bi bi-arrow-up-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Decision Room Entry CTA -->
 <section id="dr-entry" class="dr-entry-section" aria-label="Interactive Experience">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -183,6 +236,41 @@
           <i class="bi bi-arrow-right" aria-hidden="true"></i>
         </a>
         <p class="dr-hint"><i class="bi bi-info-circle" aria-hidden="true"></i> Interactive simulation &nbsp;·&nbsp; No login required &nbsp;·&nbsp; ~5 minutes</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Credentials -->
+<section class="home-block section pt-0" aria-labelledby="creds-heading">
+  <div class="container">
+    <header class="block-head" data-aos="fade-up">
+      <span class="eyebrow">Credentials</span>
+      <h2 id="creds-heading">Certified across <span class="serif">cloud, security &amp; networking</span></h2>
+      <a href="{% url 'resume' %}" class="link-arrow">Full resume <i class="bi bi-arrow-right"></i></a>
+    </header>
+    <ul class="cred-grid" data-aos="fade-up" data-aos-delay="100">
+      <li><i class="bi bi-cloud" aria-hidden="true"></i><div><strong>AWS Certified Cloud Practitioner</strong><span>Amazon Web Services &middot; 2023</span></div></li>
+      <li><i class="bi bi-boxes" aria-hidden="true"></i><div><strong>Kubernetes and Cloud Native Associate (KCNA)</strong><span>Linux Foundation &middot; 2025</span></div></li>
+      <li><i class="bi bi-shield-check" aria-hidden="true"></i><div><strong>Microsoft Identity, Compliance and Security Fundamentals</strong><span>Microsoft &middot; 2025</span></div></li>
+      <li><i class="bi bi-router" aria-hidden="true"></i><div><strong>CCNA Levels 1, 2 &amp; 3</strong><span>Cisco Networking Academy &middot; 2023</span></div></li>
+      <li><i class="bi bi-shield-lock" aria-hidden="true"></i><div><strong>Cisco Certified Network Security</strong><span>Cisco Networking Academy &middot; 2023</span></div></li>
+      <li><i class="bi bi-terminal" aria-hidden="true"></i><div><strong>Introduction to Linux Systems Administration</strong><span>Linux Foundation &middot; 2025</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="container" data-aos="fade-up">
+    <div class="cta-card">
+      <div>
+        <span class="eyebrow">Open to opportunities</span>
+        <h2 id="cta-heading">Let&rsquo;s build something <span class="serif">dependable.</span></h2>
+        <p>Software engineering, DevOps, cloud security and data roles. Remote or on-site from Nairobi.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="{% url 'contact' %}" class="btn-gradient">Start a conversation <i class="bi bi-arrow-right"></i></a>
+        <a href="mailto:Emhmanuh@gmail.com" class="btn-ghost">Emhmanuh@gmail.com</a>
       </div>
     </div>
   </div>
